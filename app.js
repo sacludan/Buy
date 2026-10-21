@@ -70,48 +70,6 @@ const DIFF = {
  easy:{label:'簡單模式',short:'簡單',noise:1,popup:22000,desc:'彈窗少、盜版少',tone:'easy',interactMin:7,interactMax:10},
  crazy:{label:'瘋狂模式',short:'瘋狂',noise:5,popup:8000,desc:'廣告狂跳、假貨亂入',tone:'crazy',interactMin:1,interactMax:2}
 };
-const PEOPLE=[
- {name:'林小米',phone:'0900-123-367',address:'台北市故事區閃購路6號1樓',card:'9999 1234 4567 8021',expiry:'01/29',cvv:'313'},
- {name:'王樂樂',phone:'0900-140-446',address:'基隆市遊戲區月亮路23號4樓',card:'9999 1383 4778 8200',expiry:'06/30',cvv:'372'},
- {name:'陳果果',phone:'0900-157-525',address:'花蓮縣假想區好買街40號7樓',card:'9999 1532 4989 8379',expiry:'11/31',cvv:'431'},
- {name:'張小宇',phone:'0900-174-604',address:'高雄市練習區小熊街57號10樓',card:'9999 1681 5200 8558',expiry:'04/32',cvv:'490'},
- {name:'李映彤',phone:'0900-191-683',address:'苗栗縣體驗區快手街74號1樓',card:'9999 1830 5411 8737',expiry:'09/33',cvv:'549'},
- {name:'黃子晴',phone:'0900-208-762',address:'台中市模擬區折扣街91號4樓',card:'9999 1979 5622 8916',expiry:'02/29',cvv:'608'},
- {name:'劉宇辰',phone:'0900-225-841',address:'嘉義市虛構區香草街108號7樓',card:'9999 2128 5833 9095',expiry:'07/30',cvv:'667'},
- {name:'吳怡安',phone:'0900-242-920',address:'新北市測試區幸福路125號10樓',card:'9999 2277 6044 9274',expiry:'12/31',cvv:'726'},
- {name:'周可欣',phone:'0900-259-999',address:'彰化縣故事區購物路142號1樓',card:'9999 2426 6255 9453',expiry:'05/32',cvv:'785'},
- {name:'許柏翰',phone:'0900-276-078',address:'台東縣遊戲區花園街159號4樓',card:'9999 2575 6466 9632',expiry:'10/33',cvv:'844'},
- {name:'鄭心妤',phone:'0900-293-157',address:'新竹市假想區便利巷176號7樓',card:'9999 2724 6677 9811',expiry:'03/29',cvv:'903'},
- {name:'蔡昱廷',phone:'0900-310-236',address:'雲林縣練習區雲朵路17號10樓',card:'9999 2873 6888 9990',expiry:'08/30',cvv:'962'},
- {name:'楊書涵',phone:'0900-327-315',address:'台南市體驗區好物路34號1樓',card:'9999 3022 7099 0169',expiry:'01/31',cvv:'121'},
- {name:'謝思妍',phone:'0900-344-394',address:'屏東縣模擬區晴天街51號4樓',card:'9999 3171 7310 0348',expiry:'06/32',cvv:'180'},
- {name:'曾品蓁',phone:'0900-361-473',address:'桃園市虛構區星光路68號7樓',card:'9999 3320 7521 0527',expiry:'11/33',cvv:'239'},
- {name:'邱子軒',phone:'0900-378-552',address:'宜蘭縣測試區速度大道85號10樓',card:'9999 3469 7732 0706',expiry:'04/29',cvv:'298'},
- {name:'廖婉柔',phone:'0900-395-631',address:'台北市故事區咖啡街102號1樓',card:'9999 3618 7943 0885',expiry:'09/30',cvv:'357'},
- {name:'郭冠霖',phone:'0900-412-710',address:'基隆市遊戲區晨光路119號4樓',card:'9999 3767 8154 1064',expiry:'02/31',cvv:'416'},
- {name:'洪采薇',phone:'0900-429-789',address:'花蓮縣假想區閃購路136號7樓',card:'9999 3916 8365 1243',expiry:'07/32',cvv:'475'},
- {name:'何以晴',phone:'0900-446-868',address:'高雄市練習區月亮路153號10樓',card:'9999 4065 8576 1422',expiry:'12/33',cvv:'534'},
- {name:'羅晨希',phone:'0900-463-947',address:'苗栗縣體驗區好買街170號1樓',card:'9999 4214 8787 1601',expiry:'05/29',cvv:'593'},
- {name:'高宇哲',phone:'0900-480-026',address:'台中市模擬區小熊街11號4樓',card:'9999 4363 8998 1780',expiry:'10/30',cvv:'652'},
- {name:'林安琪',phone:'0900-497-105',address:'嘉義市虛構區快手街28號7樓',card:'9999 4512 9209 1959',expiry:'03/31',cvv:'711'},
- {name:'葉彥廷',phone:'0900-514-184',address:'新北市測試區折扣街45號10樓',card:'9999 4661 9420 2138',expiry:'08/32',cvv:'770'},
- {name:'簡雨柔',phone:'0900-531-263',address:'彰化縣故事區香草街62號1樓',card:'9999 4810 9631 2317',expiry:'01/33',cvv:'829'},
- {name:'江子倫',phone:'0900-548-342',address:'台東縣遊戲區幸福路79號4樓',card:'9999 4959 9842 2496',expiry:'06/29',cvv:'888'},
- {name:'宋梓涵',phone:'0900-565-421',address:'新竹市假想區購物路96號7樓',card:'9999 5108 0053 2675',expiry:'11/30',cvv:'947'},
- {name:'杜心怡',phone:'0900-582-500',address:'雲林縣練習區花園街113號10樓',card:'9999 5257 0264 2854',expiry:'04/31',cvv:'106'},
- {name:'彭宥瑄',phone:'0900-599-579',address:'台南市體驗區便利巷130號1樓',card:'9999 5406 0475 3033',expiry:'09/32',cvv:'165'},
- {name:'沈承恩',phone:'0900-616-658',address:'屏東縣模擬區雲朵路147號4樓',card:'9999 5555 0686 3212',expiry:'02/33',cvv:'224'},
- {name:'方亦晴',phone:'0900-633-737',address:'桃園市虛構區好物路164號7樓',card:'9999 5704 0897 3391',expiry:'07/29',cvv:'283'},
- {name:'戴佳穎',phone:'0900-650-816',address:'宜蘭縣測試區晴天街181號10樓',card:'9999 5853 1108 3570',expiry:'12/30',cvv:'342'},
- {name:'范佑嘉',phone:'0900-667-895',address:'台北市故事區星光路22號1樓',card:'9999 6002 1319 3749',expiry:'05/31',cvv:'401'},
- {name:'潘芷晴',phone:'0900-684-974',address:'基隆市遊戲區速度大道39號4樓',card:'9999 6151 1530 3928',expiry:'10/32',cvv:'460'},
- {name:'田羽彤',phone:'0900-701-053',address:'花蓮縣假想區咖啡街56號7樓',card:'9999 6300 1741 4107',expiry:'03/33',cvv:'519'},
- {name:'白沛珊',phone:'0900-718-132',address:'高雄市練習區晨光路73號10樓',card:'9999 6449 1952 4286',expiry:'08/29',cvv:'578'},
- {name:'顏子恆',phone:'0900-735-211',address:'苗栗縣體驗區閃購路90號1樓',card:'9999 6598 2163 4465',expiry:'01/30',cvv:'637'},
- {name:'石心瑜',phone:'0900-752-290',address:'台中市模擬區月亮路107號4樓',card:'9999 6747 2374 4644',expiry:'06/31',cvv:'696'},
- {name:'莫子晴',phone:'0900-769-369',address:'嘉義市虛構區好買街124號7樓',card:'9999 6896 2585 4823',expiry:'11/32',cvv:'755'},
- {name:'游皓宇',phone:'0900-786-448',address:'新北市測試區小熊街141號10樓',card:'9999 7045 2796 5002',expiry:'04/33',cvv:'814'},
-];
 const ICONS={
  search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
  cart:'<circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/><path d="M2 3h2l2.5 12h12.8l2.2-9H5"/>',
@@ -176,7 +134,7 @@ const INLINE_ADS=[
  {cls:'vip',tag:'VIP 專區',title:'一鍵升級免等待',desc:'只是升級廣告會更多',emoji:'💎'},
  {cls:'lucky',tag:'限時抽獎',title:'試手氣拿折扣',desc:'先點再說，買東西等等',emoji:'🎡'}
 ];
-const state={view:'home',difficulty:null,tasks:[],profile:null,offers:[],cart:{},activeOffer:null,reviewFilter:'all',search:'',category:'全部',sort:'recommend',taskTab:'goods',taskOpen:false,viewAfterTask:'shop',startedAt:0,elapsed:0,popupAt:0,promoOpen:false,currentAd:null,promoDismissStage:0,promoDismissReadyAt:0,adSequence:[],adStage:0,adShown:0,adLastTypes:[],adCloseHits:0,adHoldStart:0,adBubbleCount:0,interactionCount:0,nextPopupInteraction:0,modal:null,result:null,lastToastAt:0,lastAdTitle:null};
+const state={view:'home',difficulty:null,tasks:[],profile:null,offers:[],cart:{},activeOffer:null,reviewFilter:'all',search:'',category:'全部',sort:'recommend',taskOpen:false,viewAfterTask:'shop',startedAt:0,elapsed:0,popupAt:0,promoOpen:false,currentAd:null,promoDismissStage:0,promoDismissReadyAt:0,adSequence:[],adStage:0,adShown:0,adLastTypes:[],adCloseHits:0,adHoldStart:0,adBubbleCount:0,interactionCount:0,nextPopupInteraction:0,modal:null,result:null,lastToastAt:0,lastAdTitle:null};
 let ticker=null;
 const getOffer=id=>state.offers.find(o=>o.id===id);
 const productImage=(id,extra='',kind='')=>`<img src="./assets/prod-${id}${kind.startsWith('fake')?'-fake':''}.svg" alt="商品圖片" class="${extra}" loading="lazy" />`;
@@ -239,8 +197,8 @@ function offersFor(p,level){
 function newRound(level){
  const candidates=shuffle(PRODUCTS);state.tasks=candidates.slice(0,3).map(p=>({pid:p.id,spec:p.spec,qty:1}));
  const seen=candidates.slice(0,9),offers=seen.flatMap(p=>offersFor(p,level));
- state.offers=shuffle(offers);state.difficulty=level;state.profile=PEOPLE[rnd(PEOPLE.length)];
- state.cart={};state.search='';state.category='全部';state.sort='recommend';state.activeOffer=null;state.reviewFilter='all';state.taskTab='goods';state.taskOpen=false;state.startedAt=0;state.elapsed=0;state.popupAt=0;state.promoOpen=false;state.currentAd=null;state.promoDismissStage=0;state.promoDismissReadyAt=0;state.adSequence=[];state.adStage=0;state.adShown=0;state.adLastTypes=[];state.adCloseHits=0;state.interactionCount=0;state.nextPopupInteraction=0;state.lastAdTitle=null;state.result=null;
+ state.offers=shuffle(offers);state.difficulty=level;
+ state.cart={};state.search='';state.category='全部';state.sort='recommend';state.activeOffer=null;state.reviewFilter='all';state.taskOpen=false;state.startedAt=0;state.elapsed=0;state.popupAt=0;state.promoOpen=false;state.currentAd=null;state.promoDismissStage=0;state.promoDismissReadyAt=0;state.adSequence=[];state.adStage=0;state.adShown=0;state.adLastTypes=[];state.adCloseHits=0;state.interactionCount=0;state.nextPopupInteraction=0;state.lastAdTitle=null;state.result=null;
  state.view='task';render();
 }
 function scheduleNextPopup(){const d=DIFF[state.difficulty];if(!d)return;const span=(d.interactMax||d.interactMin)-d.interactMin;state.nextPopupInteraction=state.interactionCount+d.interactMin+rnd(Math.max(1,span+1));}
@@ -283,7 +241,7 @@ function adClose(action){const a=state.currentAd;if(!a)return;
  finishAdStage();
 }
 function maybeOpenPromo(reason='interaction'){const d=DIFF[state.difficulty];if(!d||state.promoOpen||state.taskOpen||state.modal||!state.startedAt)return false;
- if(!['shop','detail','reviews','cart','checkout'].includes(state.view))return false;
+ if(!['shop','detail','reviews','cart'].includes(state.view))return false;
  if(reason==='time'){
    const baseDelay=state.difficulty==='crazy'?8000:22000;
    if(state.elapsed>(state.popupAt?state.popupAt+d.popup:baseDelay)){openPromo();return true;}
@@ -334,22 +292,17 @@ function renderHome(){let records=loadScores(),best=records.reduce((b,r)=>Math.m
  <div class="feature-card"><div>⭐</div><b>評論偵探</b><small>五星不代表一定真</small></div>
  <div class="feature-card"><div>💳</div><b>極速結帳</b><small>送出後才能揭曉</small></div></div></section>
  <div class="home-record"><div><span>我的最佳紀錄</span><strong>${Number.isFinite(best)?fmtTime(best):'尚未挑戰'}</strong><small>只記錄成功結帳的成績</small></div><button data-action="show-records">${I('trophy',20)}<br/><span>紀錄</span></button></div>
- <footer class="home-footer">虛構商店 × 虛構卡號 · 無真實付款</footer>
+ <footer class="home-footer">虛構商城 × 模擬結帳 · 無真實交易</footer>
  </main>`;}
 function renderDifficulty(){return `<main class="levels-screen screen-enter"><header class="simple-header"><button data-action="go-home" class="icon-btn">${I('back')}</button><span>選擇難度</span><div class="header-space"></div></header>
  <div class="level-intro"><span class="eyebrow">CHOOSE YOUR LEVEL</span><h1>今天想被<br/>廣告折磨幾分？</h1><p>兩種難度都是 <b>3 件商品</b><br/>差別只在干擾有多惡劣！</p></div>
  <div class="sticky-stack">
  ${[['easy','🍃','簡單難度','先熱身一下','少少彈窗・少少盜版'],['crazy','🔥','瘋狂難度','歡迎來到網購地獄','超多廣告・超多假貨・關都難關']].map(([id,em,title,sub,desc],i)=>`<button class="level-note note-${id}" data-action="select-level" data-level="${id}" style="--rotation:${[ -2,1.8][i]}deg"><span class="tape"></span><span class="level-em">${em}</span><span class="level-words"><b>${title}</b><strong>${sub}</strong><small>${desc}</small></span>${I('chevron',26)}</button>`).join('')}
  </div><p class="level-footnote">※ 商品數量相同；秒數只在挑戰成功後保存。</p></main>`;}
-function renderStickyContent(tab,compact=false){const p=state.profile;
- if(tab==='goods')return `<div class="task-list">${state.tasks.map((t,i)=>{let prod=PRODUCT_MAP[t.pid];return `<div class="task-entry"><span class="task-index">${i+1}</span><span><b>${esc(productTitle(prod))}</b><small>規格：${esc(t.spec)}　·　數量：${t.qty}</small></span></div>`;}).join('')}</div><p class="note-hint">⚠️ 找到正確規格的「正版」才算完成</p>`;
- if(tab==='person')return `<dl class="info-list"><div><dt>收件人</dt><dd>${esc(p.name)}</dd></div><div><dt>聯絡電話</dt><dd>${esc(p.phone)}</dd></div><div><dt>配送地址</dt><dd>${esc(p.address)}</dd></div></dl>`;
- return `<dl class="info-list"><div><dt>遊戲卡號</dt><dd class="mono-text">${esc(p.card)}</dd></div><div><dt>有效期限</dt><dd>${esc(p.expiry)}</dd></div><div><dt>安全碼</dt><dd>${esc(p.cvv)}</dd></div></dl><p class="note-hint">僅供遊戲使用。請勿輸入真實信用卡資料。</p>`;
-}
-function taskTabs(){return `<div class="task-tabs"><button data-action="task-tab" data-tab="goods" class="${state.taskTab==='goods'?'selected':''}">🛍️ 商品清單</button><button data-action="task-tab" data-tab="person" class="${state.taskTab==='person'?'selected':''}">📍 收件資料</button><button data-action="task-tab" data-tab="card" class="${state.taskTab==='card'?'selected':''}">💳 付款卡</button></div>`;}
+function renderStickyContent(){return `<div class="task-list">${state.tasks.map((t,i)=>{let prod=PRODUCT_MAP[t.pid];return `<div class="task-entry"><span class="task-index">${i+1}</span><span><b>${esc(productTitle(prod))}</b><small>規格：${esc(t.spec)}　·　數量：${t.qty}</small></span></div>`;}).join('')}</div><p class="note-hint">⚠️ 找到正確規格的「正版」才算完成</p>`;}
 function renderTask(){return `<main class="task-start screen-enter"><header class="simple-header"><button class="icon-btn" data-action="choose-difficulty">${I('back')}</button><span>購物任務</span><div class="header-space"></div></header>
  <div class="task-intro"><span class="eyebrow">YOUR SHOPPING MISSION</span><h1>任務已送達！📋</h1><p>${DIFF[state.difficulty].label} · 3 件指定商品<br/>先看看清單，準備好再開始計時。</p></div>
- <div class="stacked-notes"><div class="stacked-note behind green"></div><div class="stacked-note behind pink"></div><section class="mission-note"><div class="tape"></div><div class="note-heading"><span>SHOPPING LIST</span><span>NO. 00${rnd(9)+1}</span></div>${taskTabs()}<div class="note-main">${renderStickyContent(state.taskTab)}</div></section></div>
+ <div class="stacked-notes"><div class="stacked-note behind green"></div><div class="stacked-note behind pink"></div><section class="mission-note"><div class="tape"></div><div class="note-heading"><span>SHOPPING LIST</span><span>NO. 00${rnd(9)+1}</span></div><div class="note-main">${renderStickyContent()}</div></section></div>
  <div class="task-start-bottom"><p>${I('info',16)} 開始後便利貼會收在畫面邊緣，隨時可拉出。查看時<span>時間照常計算</span>。</p><button class="primary-btn big-btn" data-action="begin">確認，開始計時！ ${I('arrow',20)}</button></div></main>`;}
 function offerCard(o){const p=PRODUCT_MAP[o.pid];return `<button class="product-card" data-action="open-offer" data-id="${o.id}" aria-label="查看 ${esc(o.title)}">
  <div class="product-photo">${productImage(p.id,'',o.kind)}${o.kind==='deal'?'<span class="photo-tag orange">限時特價</span>':o.kind==='official'?'<span class="photo-tag blue">商城嚴選</span>':(o.kind.startsWith('fake')?'<span class="photo-tag coral">人氣推薦</span>':'')}</div>
@@ -387,19 +340,10 @@ function renderReviews(){const o=getOffer(state.activeOffer);if(!o)return render
  <div class="review-sample-count">本賣場展示 ${reviews.length} 則模擬買家評論，請注意好評與負評的具體內容。</div><div class="all-reviews">${reviews.length?reviews.map(r=>renderReview(r,p,o.kind)).join(''):'<div class="empty-state">這個篩選條件沒有評論。</div>'}</div></div>`,'shop');}
 function cartItem(o,q){let p=PRODUCT_MAP[o.pid];return `<div class="cart-item"><div class="cart-photo">${productImage(p.id,'',o.kind)}</div><div class="cart-meta"><div class="cart-seller">${esc(o.seller)}${o.verified?` <span class="mini-verified">✓</span>`:''}</div><strong>${esc(o.title)}</strong><small>規格：${esc(o.spec)}</small><div class="cart-row"><b>${money(o.price)}</b><div class="qty-control"><button data-action="decrease" data-id="${o.id}" aria-label="減少數量">${I('minus',15)}</button><span>${q}</span><button data-action="increase" data-id="${o.id}" aria-label="增加數量">${I('plus',15)}</button></div></div></div></div>`;}
 function renderCart(){let entries=Object.entries(state.cart).filter(([,q])=>q>0);return layoutGame(`${gameTop({back:'go-shop',heading:'購物車',sub:`${qtyTotal()} 件商品`,cart:false})}
- <div class="scroll-view cart-scroll">${entries.length?`<div class="cart-message">${I('info',18)} 結帳前可以隨時修改。真正付款前請仔細確認商品。</div><div class="cart-list">${entries.map(([id,q])=>cartItem(getOffer(id),q)).join('')}</div>
+ <div class="scroll-view cart-scroll">${entries.length?`<div class="cart-message">${I('info',18)} 結帳前可以隨時修改。按下「立即結帳」就會直接核對商品並結算，無法再更改。</div><div class="cart-list">${entries.map(([id,q])=>cartItem(getOffer(id),q)).join('')}</div>
  ${state.difficulty==='crazy'?`<button class="cart-upsell" data-action="ad-click"><span>🎁</span><div><b>湊滿免運！要不要再加購神秘好禮？</b><small>限時特惠，手慢就沒了</small></div>${I('chevron',19)}</button>`:''}`:`<div class="cart-empty">${I('cart',52)}<h2>購物車還是空的！</h2><p>快回商城搜尋任務指定的三樣商品。</p><button class="primary-btn" data-action="go-shop">開始逛逛 ${I('arrow')}</button></div>`}
- </div><div class="cart-footer"><div><span>商品總金額（${qtyTotal()} 件）</span><strong>${money(cartTotal())}</strong></div><button class="orange-btn" data-action="go-checkout" ${entries.length?'':'disabled'}>前往結帳 ${I('arrow',18)}</button></div>`,'cart');}
-function checkoutInput(key,label,placeholder,type='text',maxlen=120){return `<label class="checkout-field"><span>${label}</span><input data-input="${key}" type="${type}" maxlength="${maxlen}" placeholder="${placeholder}" autocomplete="off" autocapitalize="off" spellcheck="false" /></label>`;}
-function renderCheckout(){let entries=Object.entries(state.cart).filter(([,q])=>q>0);if(!entries.length)return renderCart();return layoutGame(`${gameTop({back:'go-cart',heading:'確認訂單',sub:'送出後無法修改',cart:false})}
- <div class="scroll-view checkout-scroll"><div class="checkout-warning">${I('alert',19)} <span>請輸入便利貼上的<strong>虛構資料</strong>。按下結帳後才會公布驗證結果，錯一項就失敗！</span></div>
- <section class="checkout-section"><h3>${I('pin',20)} 收件人資訊</h3>${checkoutInput('name','收件人姓名','請輸入任務指定姓名')}${checkoutInput('phone','聯絡電話','09xx-xxx-xxx','tel',16)}${checkoutInput('address','配送地址','請輸入完整地址')}</section>
- <section class="checkout-section"><h3>${I('card',20)} 模擬付款卡</h3><p class="checkout-sub">僅供遊戲使用，請勿輸入真實卡號。</p>${checkoutInput('card','遊戲卡號','9999 0000 0000 0000','text',19)}<div class="two-fields">${checkoutInput('expiry','有效期限','MM/YY','text',5)}${checkoutInput('cvv','安全碼','3 位數','text',3)}</div></section>
- <section class="checkout-section"><h3>${I('receipt',20)} 訂單內容</h3>${entries.map(([id,q])=>{let o=getOffer(id);return `<div class="checkout-line"><span>${esc(o.title)} × ${q}<small>${esc(o.spec)}</small></span><b>${money(o.price*q)}</b></div>`;}).join('')}<div class="checkout-grand"><span>合計</span><b>${money(cartTotal())}</b></div></section>
- ${state.difficulty==='crazy'?`<button class="payment-deception" data-action="ad-click">${I('gift',20)}<span>神秘禮品加購：點我再省 99 元！</span>${I('chevron',16)}</button>`:''}
- <div class="safe-footer">${I('shield',17)} 模擬購物流程，不會連線付款，也不蒐集真實資料</div>
- </div><div class="checkout-bottom"><div class="between"><span>應付金額</span><b>${money(cartTotal())}</b></div><button class="orange-btn submit-order" data-action="submit-order">確認結帳・核對訂單 ${I('arrow',19)}</button><small>最後一步！資料錯誤或買到盜版皆立即失敗。</small></div>`,'cart');}
-function verifyOrder(fields){
+ </div><div class="cart-footer"><div><span>商品總金額（${qtyTotal()} 件）</span><strong>${money(cartTotal())}</strong></div><button class="orange-btn" data-action="submit-order" ${entries.length?'':'disabled'}>立即結帳 ${I('arrow',18)}</button></div>`,'cart');}
+function verifyOrder(){
  let mistakes=[],tasks=state.tasks,cartEntries=Object.entries(state.cart).filter(([,q])=>q>0);
  for(const task of tasks){const p=PRODUCT_MAP[task.pid],found=cartEntries.filter(([id])=>getOffer(id).pid===task.pid),validQty=found.filter(([id])=>{let o=getOffer(id);return o.authentic&&o.spec===task.spec;}).reduce((a,[,q])=>a+q,0);
  if(validQty!==task.qty){
@@ -412,13 +356,6 @@ function verifyOrder(fields){
  for(const [id,q] of cartEntries){let o=getOffer(id),t=tasks.find(t=>t.pid===o.pid);if(!t)mistakes.push(`多買了任務以外的商品：「${o.title}」`);
  else if((!o.authentic||o.spec!==t.spec)&&!mistakes.some(s=>s.includes(productTitle(PRODUCT_MAP[o.pid]))))mistakes.push(`「${o.title}」不是符合任務的正版規格`);
  }
- let p=state.profile;
- if((fields.name||'').trim()!==p.name)mistakes.push('收件人姓名不正確');
- if(digits(fields.phone)!==digits(p.phone))mistakes.push('聯絡電話不正確');
- if((fields.address||'').replace(/\s/g,'')!==p.address.replace(/\s/g,''))mistakes.push('配送地址不正確');
- if(digits(fields.card)!==digits(p.card))mistakes.push('遊戲卡號不正確');
- if((fields.expiry||'').replace(/\s/g,'')!==p.expiry)mistakes.push('有效期限不正確');
- if(digits(fields.cvv)!==digits(p.cvv))mistakes.push('安全碼不正確');
  return [...new Set(mistakes)];
 }
 function orderComparisonRows(){
@@ -455,17 +392,16 @@ function renderFailureReport(r){
  ${r.selected.length>1?`<div class="failure-more-purchases"><b>你在這項任務實際放入的所有商品</b>${r.selected.map(x=>`<p>• ${esc(x.offer.title)}／${esc(x.offer.seller)} × ${x.qty}（${money(x.offer.price*x.qty)}）</p>`).join('')}</div>`:''}
  ${r.notes.length?`<div class="failure-clues"><b>🔍 錯誤原因與辨識線索</b>${r.notes.map(note=>`<p>• ${esc(note)}</p>`).join('')}</div>`:`<div class="failure-success">✓ 這項商品正確，並非失敗原因</div>`}
  </article>`}).join('')}
- ${extra.length?`<div class="failure-extra"><b>📦 多買的非任務商品</b>${extra.map(x=>`<p>${esc(x.offer.title)} × ${x.qty}</p>`).join('')}</div>`:''}
- ${r.mistakes.some(x=>/收件人|聯絡電話|配送地址|卡號|有效期限|安全碼/.test(x))?`<div class="failure-data"><b>🪪 填寫資料問題</b>${r.mistakes.filter(x=>/收件人|聯絡電話|配送地址|卡號|有效期限|安全碼/.test(x)).map(x=>`<p>• ${esc(x)}</p>`).join('')}<small>付款卡屬於虛構遊戲資料，結帳後不會保留輸入內容。</small></div>`:''}</section>`;
+ ${extra.length?`<div class="failure-extra"><b>📦 多買的非任務商品</b>${extra.map(x=>`<p>${esc(x.offer.title)} × ${x.qty}</p>`).join('')}</div>`:''}</section>`;
 }
-function submitOrder(){const fields={};document.querySelectorAll('[data-input]').forEach(el=>fields[el.dataset.input]=el.value);stopTimer();const mistakes=verifyOrder(fields);
+function submitOrder(){if(state.view!=='cart'||!state.startedAt||!qtyTotal()||state.promoOpen||state.taskOpen)return;stopTimer();const mistakes=verifyOrder();
  const selectedSum=cartTotal(),minTotal=state.tasks.reduce((sum,t)=>sum+minGenuine(t)*t.qty,0);
  const breakdown=state.tasks.map(t=>{const p=PRODUCT_MAP[t.pid],picked=Object.entries(state.cart).filter(([id,q])=>q>0&&getOffer(id).pid===t.pid).map(([id,q])=>({offer:getOffer(id),qty:q}));return {name:productTitle(p),spec:t.spec,min:minGenuine(t),selected:picked.reduce((s,r)=>s+r.offer.price*r.qty,0),extra:picked.reduce((s,r)=>s+r.offer.price*r.qty,0)-minGenuine(t)*t.qty};});
  state.result={success:!mistakes.length,mistakes,time:state.elapsed,total:selectedSum,minTotal,extra:selectedSum-minTotal,breakdown,comparisons:orderComparisonRows()};
  if(state.result.success)saveScore({difficulty:state.difficulty,ms:state.elapsed,extra:state.result.extra,total:selectedSum,at:new Date().toISOString()});
  view('result');}
 function renderResult(){let r=state.result;if(!r)return renderHome();const success=r.success;return `<main class="result-screen screen-enter"><header class="simple-header"><div class="header-space"></div><span>購物成績單</span><div class="header-space"></div></header>
- <div class="result-scroll"><div class="result-banner ${success?'win':'lose'}"><span class="result-emoji">${success?'🎉':'💔'}</span><span class="eyebrow">${success?'ORDER SUCCESS':'ORDER FAILED'}</span><h1>${success?'購物挑戰成功！':'結帳失敗！'}</h1><p>${success?'三件商品正確，聯絡與付款資料都通過！':'送出後才揭曉答案，這局不會留下成績。'}</p></div>
+ <div class="result-scroll"><div class="result-banner ${success?'win':'lose'}"><span class="result-emoji">${success?'🎉':'💔'}</span><span class="eyebrow">${success?'ORDER SUCCESS':'ORDER FAILED'}</span><h1>${success?'購物挑戰成功！':'結帳失敗！'}</h1><p>${success?'三件商品全都符合任務，恭喜結帳成功！':'送出後才揭曉答案，這局不會留下成績。'}</p></div>
  ${success?`<div class="result-time"><small>本次完成秒數</small><strong>${fmtTime(r.time)}</strong><span>${DIFF[state.difficulty].label} · 已存入此裝置紀錄</span></div>
  <section class="result-money"><div class="between"><h3>💸 你的冤大頭指數</h3><span class="tiny-label">跟最低正版價比</span></div>
  <div class="result-money-row"><span>本次實際花費</span><b>${money(r.total)}</b></div><div class="result-money-row"><span>三樣正版最低總價</span><b>${money(r.minTotal)}</b></div><div class="overpaid"><small>你總共多花了</small><strong>${money(r.extra)}</strong><span>${r.extra===0?'太狠了！你連一塊錢都不肯多花。':r.extra<=300?'手速和省錢都很有一套！':r.extra<=1000?'恭喜結帳成功！但錢包在流淚。':'VIP 冤大頭認證，商家看到你都笑了！'}</span></div>
@@ -475,10 +411,10 @@ function renderResult(){let r=state.result;if(!r)return renderHome();const succe
  </div><div class="result-bottom"><button class="outline-btn" data-action="go-home">返回首頁</button><button class="primary-btn" data-action="again">再挑戰一次 ${I('reload',19)}</button></div></main>`;}
 function loadScores(){try{return JSON.parse(localStorage.getItem('speedmart-scores-v2')||'[]')||[];}catch{return [];}}
 function saveScore(r){try{let scores=loadScores();scores.push(r);localStorage.setItem('speedmart-scores-v2',JSON.stringify(scores.slice(-100)));}catch{toast('本機儲存空間不可用，成績未保存');}}
-function renderInfoModal(){let m=state.modal;if(!m)return '';if(m==='help')return `<div class="modal-dimmer" data-action="close-modal"><section class="info-modal"><div class="between"><h2>📖 遊戲說明</h2><button class="icon-btn" data-action="close-modal">${I('close')}</button></div><p><b>① 接任務：</b>選擇難度，收到 3 件商品、收件資訊和虛構卡號。</p><p><b>② 開始計時：</b>自行搜尋商品、看評價、選正版及規格，隨時可打開側邊便利貼。</p><p><b>③ 完成結帳：</b>送出後才檢查真假、數量、收件資料與卡號；有錯即失敗。</p><p><b>④ 成功計分：</b>顯示完成秒數，以及跟同規格最低價正版相比多花多少錢。</p><div class="rule-highlight">✅ 官方「平台認證」徽章是真的，但店家名稱寫「官方」不代表有認證。</div><button class="primary-btn" data-action="close-modal">知道了，開始購物！</button></section></div>`;
+function renderInfoModal(){let m=state.modal;if(!m)return '';if(m==='help')return `<div class="modal-dimmer" data-action="close-modal"><section class="info-modal"><div class="between"><h2>📖 遊戲說明</h2><button class="icon-btn" data-action="close-modal">${I('close')}</button></div><p><b>① 接任務：</b>選擇難度，收到 3 件指定商品的便利貼。</p><p><b>② 開始計時：</b>自行搜尋商品、看評價、選正版及規格，隨時可打開側邊便利貼。</p><p><b>③ 完成結帳：</b>在購物車按「立即結帳」就會核對真假、規格與數量；任何錯誤都會失敗。</p><p><b>④ 成功計分：</b>顯示完成秒數，以及跟同規格最低價正版相比多花多少錢。</p><div class="rule-highlight">✅ 官方「平台認證」徽章是真的，但店家名稱寫「官方」不代表有認證。</div><button class="primary-btn" data-action="close-modal">知道了，開始購物！</button></section></div>`;
  if(m==='records'){let scores=loadScores().sort((a,b)=>a.ms-b.ms),best=['easy','crazy'].map(k=>({key:k,score:scores.find(s=>s.difficulty===k)}));return `<div class="modal-dimmer" data-action="close-modal"><section class="info-modal"><div class="between"><h2>🏆 個人紀錄</h2><button class="icon-btn" data-action="close-modal">${I('close')}</button></div><p class="modal-note">記錄在這台裝置的瀏覽器，不是全球排行榜。</p>${best.map(({key,score})=>`<div class="score-line"><span>${DIFF[key].label}</span><b>${score?fmtTime(score.ms):'尚無紀錄'}</b></div>`).join('')}<div class="records-caption">共成功完成 ${scores.length} 次挑戰</div><button class="primary-btn" data-action="close-modal">關閉</button></section></div>`;}
  return '';}
-function renderTaskDrawer(){if(!state.taskOpen)return '';return `<div class="drawer-dimmer" data-action="close-task"><aside class="task-drawer"><div class="drawer-top"><div><span class="eyebrow">SHOPPING MISSION</span><h2>我的便利貼 📝</h2></div><button class="icon-btn" data-action="close-task">${I('close',22)}</button></div><div class="drawer-timer">${I('clock',17)} 挑戰持續計時 <strong class="js-timer">${fmtTime(state.elapsed)}</strong></div><section class="drawer-note">${taskTabs()}<div class="note-main">${renderStickyContent(state.taskTab,true)}</div></section><button class="primary-btn drawer-close-btn" data-action="close-task">收起便利貼，繼續買 ${I('arrow',17)}</button></aside></div>`;}
+function renderTaskDrawer(){if(!state.taskOpen)return '';return `<div class="drawer-dimmer" data-action="close-task"><aside class="task-drawer"><div class="drawer-top"><div><span class="eyebrow">SHOPPING MISSION</span><h2>我的便利貼 📝</h2></div><button class="icon-btn" data-action="close-task">${I('close',22)}</button></div><div class="drawer-timer">${I('clock',17)} 挑戰持續計時 <strong class="js-timer">${fmtTime(state.elapsed)}</strong></div><section class="drawer-note"><div class="note-main">${renderStickyContent()}</div></section><button class="primary-btn drawer-close-btn" data-action="close-task">收起便利貼，繼續買 ${I('arrow',17)}</button></aside></div>`;}
 function renderPromo(){
  if(!state.promoOpen||!state.currentAd)return '';
  const a=state.currentAd,t=a.type,boss=a.boss,stage=state.adStage+1,stages=state.adSequence.length;
@@ -501,7 +437,7 @@ function renderPromo(){
  return `<div class="v3-ad-overlay ad-overlay-${t}" role="dialog" aria-label="模擬廣告">${body}</div>`;
 }
 function renderOverlay(){let el=$('#overlays');if(el)el.innerHTML=renderTaskDrawer()+renderPromo()+renderInfoModal();}
-function render(){let html='';switch(state.view){case 'home':html=renderHome();break;case 'levels':html=renderDifficulty();break;case 'task':html=renderTask();break;case 'shop':html=renderShop();break;case 'detail':html=renderDetail();break;case 'reviews':html=renderReviews();break;case 'cart':html=renderCart();break;case 'checkout':html=renderCheckout();break;case 'result':html=renderResult();break;default:html=renderHome();}
+function render(){let html='';switch(state.view){case 'home':html=renderHome();break;case 'levels':html=renderDifficulty();break;case 'task':html=renderTask();break;case 'shop':html=renderShop();break;case 'detail':html=renderDetail();break;case 'reviews':html=renderReviews();break;case 'cart':html=renderCart();break;case 'result':html=renderResult();break;default:html=renderHome();}
  $('#app').innerHTML=html+'<div id="overlays"></div>';renderOverlay();}
 function addCart(id){if(!getOffer(id))return;state.cart[id]=(state.cart[id]||0)+1;toast('已加入購物車！結帳前仍可更改。');}
 function goHome(){if(state.startedAt){stopTimer();state.cart={};}state.modal=null;state.taskOpen=false;state.promoOpen=false;state.view='home';render();}
@@ -514,7 +450,6 @@ function handleAction(a,btn){const id=btn.dataset.id;
  case 'go-shop':view('shop');bumpAdPressure();break;
  case 'go-search':view('shop');setTimeout(()=>$('#shop-search')?.focus(),30);bumpAdPressure();break;
  case 'go-cart':view('cart');bumpAdPressure();break;
- case 'go-checkout':if(qtyTotal())view('checkout');bumpAdPressure();break;
  case 'open-offer':state.activeOffer=id;state.reviewFilter='all';view('detail');bumpAdPressure();break;
  case 'back-detail':view('detail');bumpAdPressure();break;
  case 'reviews':state.reviewFilter='all';view('reviews');bumpAdPressure();break;
@@ -527,7 +462,6 @@ function handleAction(a,btn){const id=btn.dataset.id;
  case 'decrease':state.cart[id]=Math.max(0,(state.cart[id]||0)-1);if(!state.cart[id])delete state.cart[id];render();bumpAdPressure();break;
  case 'open-task':state.taskOpen=true;state.promoOpen=false;renderOverlay();break;
  case 'close-task':state.taskOpen=false;renderOverlay();break;
- case 'task-tab':state.taskTab=btn.dataset.tab;if(state.view==='task')render();else renderOverlay();break;
  case 'submit-order':submitOrder();break;
  case 'again':newRound(state.difficulty);break;
  case 'show-help':state.modal='help';renderOverlay();break;

@@ -61,3 +61,10 @@
 .review-filter-row::-webkit-scrollbar{display:none}
 .review-filter{flex:0 0 auto;white-space:nowrap}
 .review-sample-count{font-size:11px;color:#978780;background:#fffaf7;padding:10px 16px;line-height:1.7}
+
+/* v5: direct-cart checkout, product-only task note */
+.stacked-notes{min-height:310px}
+.mission-note{min-height:300px}
+.mission-note .note-main{min-height:195px}
+.drawer-note .note-main{min-height:0}
+.cart-footer .orange-btn{font-weight:950}
