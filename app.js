@@ -32,17 +32,85 @@ const PRODUCTS = [
  {id:'tea',brand:'茶町',name:'蜜香紅茶禮盒',spec:'20入',other:'10入',cat:'食品飲料',base:580,emoji:'🍵',fake:'茶盯 蜜香紅茶禮盒',words:'紅茶、茶包、茶葉'},
  {id:'cookies',brand:'甜點日常',name:'奶油餅乾禮盒',spec:'18片裝',other:'9片裝',cat:'食品飲料',base:450,emoji:'🍪',fake:'甜點曰常 奶油餅乾禮盒',words:'餅乾、甜點、禮盒'},
  {id:'lunchbox',brand:'日便當',name:'304 不鏽鋼便當盒',spec:'1.2L・米白',other:'900ml・米白',cat:'生活家居',base:790,emoji:'🍱',fake:'曰便當 304 不鏽鋼便當盒',words:'便當盒、餐盒、不鏽鋼'},
- {id:'deskclock',brand:'時刻',name:'電子桌面鬧鐘',spec:'木紋',other:'霧黑',cat:'生活家居',base:690,emoji:'⏰',fake:'時刻 電子槕面鬧鐘',words:'時鐘、鬧鐘、電子鐘'}
+ {id:'deskclock',brand:'時刻',name:'電子桌面鬧鐘',spec:'木紋',other:'霧黑',cat:'生活家居',base:690,emoji:'⏰',fake:'時刻 電子槕面鬧鐘',words:'時鐘、鬧鐘、電子鐘'},
+ {id:'gamepad',brand:'JoyPad',name:'G2 無線遊戲手把',spec:'霧黑',other:'珍珠白',cat:'3C數位',base:1290,emoji:'🎮',fake:'J0yPad G2 無線遊戲手把',words:'遊戲手把、藍牙、搖桿'},
+ {id:'ereader',brand:'Readly',name:'6吋電子書閱讀器',spec:'深空灰',other:'湖水綠',cat:'3C數位',base:3690,emoji:'📖',fake:'ReadIy 6吋電子書閱讀器',words:'電子書、閱讀器、電子紙'},
+ {id:'projector',brand:'映點',name:'P1 迷你投影機',spec:'奶茶白',other:'霧黑',cat:'3C數位',base:4990,emoji:'📽️',fake:'暎點 P1 迷你投影機',words:'投影機、家庭劇院、迷你'},
+ {id:'microphone',brand:'SoundPit',name:'USB 桌上型麥克風',spec:'金屬黑',other:'銀灰',cat:'3C數位',base:1580,emoji:'🎤',fake:'SoundPIt USB 桌上型麥克風',words:'麥克風、直播、收音'},
+ {id:'router',brand:'NetNest',name:'AX1800 Wi-Fi 路由器',spec:'珍珠白',other:'霧黑',cat:'3C數位',base:2090,emoji:'📡',fake:'NetNesf AX1800 Wi-Fi 路由器',words:'路由器、無線網路、Wi-Fi'},
+ {id:'humidifier',brand:'霧語',name:'超音波加濕器',spec:'奶油白・2L',other:'深灰・2L',cat:'生活家居',base:1290,emoji:'💧',fake:'霧詔 超音波加濕器',words:'加濕器、霧化、居家'},
+ {id:'vacuum',brand:'DustAway',name:'無線手持吸塵器',spec:'銀灰',other:'香檳金',cat:'生活家居',base:3490,emoji:'🧹',fake:'DustAwaY 無線手持吸塵器',words:'吸塵器、無線、清潔'},
+ {id:'fryingpan',brand:'煮煮樂',name:'28cm 不沾平底鍋',spec:'霧黑・28cm',other:'霧黑・24cm',cat:'生活家居',base:1090,emoji:'🍳',fake:'煑煑樂 28cm 不沾平底鍋',words:'平底鍋、不沾鍋、料理'},
+ {id:'bedsheet',brand:'好眠日記',name:'純棉床包組',spec:'雙人・灰藍',other:'單人・灰藍',cat:'生活家居',base:1680,emoji:'🛏️',fake:'好眠除記 純棉床包組',words:'床包、寢具、純棉'},
+ {id:'kettle',brand:'暖煮',name:'1.5L 快煮壺',spec:'奶茶色',other:'霧黑',cat:'生活家居',base:1280,emoji:'🫖',fake:'暖煑 1.5L 快煮壺',words:'熱水壺、快煮壺、開水'},
+ {id:'totebag',brand:'帆布日常',name:'厚磅肩背帆布袋',spec:'原色米白',other:'焦糖棕',cat:'穿搭配件',base:520,emoji:'👜',fake:'帆布曰常 厚磅肩背帆布袋',words:'帆布袋、肩背包、購物袋'},
+ {id:'wallet',brand:'LeatherFox',name:'短夾零錢包',spec:'可可棕',other:'霧黑',cat:'穿搭配件',base:1190,emoji:'👛',fake:'LeatherF0x 短夾零錢包',words:'短夾、皮夾、零錢包'},
+ {id:'hoodie',brand:'SoftCloud',name:'棉質連帽上衣',spec:'奶茶色・M',other:'奶茶色・L',cat:'穿搭配件',base:1580,emoji:'👕',fake:'SoftCIoud 棉質連帽上衣',words:'帽T、連帽、上衣'},
+ {id:'socks',brand:'襪樂',name:'厚底運動襪三雙組',spec:'白色・M',other:'黑色・M',cat:'穿搭配件',base:350,emoji:'🧦',fake:'襪楽 厚底運動襪三雙組',words:'襪子、運動襪、棉襪'},
+ {id:'shampoo',brand:'PureLeaf',name:'植萃洗髮精',spec:'500ml・清新',other:'300ml・清新',cat:'美妝保養',base:590,emoji:'🧴',fake:'PureLeat 植萃洗髮精',words:'洗髮精、頭髮、清潔'},
+ {id:'lipbalm',brand:'蜜蜜唇',name:'保濕潤唇膏',spec:'無色・4g',other:'蜜桃色・4g',cat:'美妝保養',base:320,emoji:'💄',fake:'蜜蜜脣 保濕潤唇膏',words:'護唇膏、嘴唇、保濕'},
+ {id:'facemask',brand:'GlowMe',name:'玻尿酸面膜禮盒',spec:'10片裝',other:'5片裝',cat:'美妝保養',base:490,emoji:'🧖',fake:'GIowMe 玻尿酸面膜禮盒',words:'面膜、保養、玻尿酸'},
+ {id:'cereal',brand:'晨光麥田',name:'水果燕麥脆片',spec:'500g',other:'250g',cat:'食品飲料',base:360,emoji:'🥣',fake:'晨光麥囝 水果燕麥脆片',words:'燕麥、早餐、穀片'},
+ {id:'nuts',brand:'堅果慢慢',name:'綜合無調味堅果',spec:'400g',other:'200g',cat:'食品飲料',base:590,emoji:'🥜',fake:'堅菓慢慢 綜合無調味堅果',words:'堅果、零食、綜合'},
+ {id:'honey',brand:'蜂蜜日常',name:'台灣百花蜂蜜',spec:'700g',other:'350g',cat:'食品飲料',base:850,emoji:'🍯',fake:'蜂蜜曰常 台灣百花蜂蜜',words:'蜂蜜、百花蜜、甜味'},
+ {id:'catlitter',brand:'喵砂屋',name:'低粉塵豆腐貓砂',spec:'原味・6L',other:'綠茶味・6L',cat:'寵物用品',base:460,emoji:'🐱',fake:'喵沙屋 低粉塵豆腐貓砂',words:'貓砂、豆腐砂、貓咪'},
+ {id:'petbowl',brand:'毛球家',name:'陶瓷寵物雙碗組',spec:'奶茶白',other:'櫻花粉',cat:'寵物用品',base:680,emoji:'🥣',fake:'毛毬家 陶瓷寵物雙碗組',words:'寵物碗、貓碗、狗碗'},
+ {id:'cattoy',brand:'逗貓森林',name:'羽毛逗貓棒',spec:'藍羽款',other:'粉羽款',cat:'寵物用品',base:250,emoji:'🪶',fake:'逗喵森林 羽毛逗貓棒',words:'逗貓棒、貓玩具、羽毛'},
+ {id:'hamsterhouse',brand:'小窩森林',name:'木製小動物睡屋',spec:'大號',other:'小號',cat:'寵物用品',base:560,emoji:'🐹',fake:'小窩森淋 木製小動物睡屋',words:'倉鼠、睡屋、木屋'},
+ {id:'petbed',brand:'暖窩窩',name:'圓形寵物睡墊',spec:'灰色・M',other:'灰色・S',cat:'寵物用品',base:880,emoji:'🐶',fake:'暖窩冎 圓形寵物睡墊',words:'寵物床、睡墊、貓窩'},
+ {id:'jumprope',brand:'JumpFlow',name:'競速跳繩',spec:'黑紅・3m',other:'藍白・3m',cat:'運動戶外',base:490,emoji:'🏃',fake:'JumpFIow 競速跳繩',words:'跳繩、健身、競速'},
+ {id:'dumbbell',brand:'力力健身',name:'六角啞鈴組',spec:'5kg×2',other:'3kg×2',cat:'運動戶外',base:1380,emoji:'🏋️',fake:'力カ健身 六角啞鈴組',words:'啞鈴、重量訓練、運動'},
+ {id:'boxingwraps',brand:'拳日常',name:'拳擊彈性手綁帶',spec:'黑色・4m',other:'紅色・4m',cat:'運動戶外',base:420,emoji:'🥊',fake:'拳曰常 拳擊彈性手綁帶',words:'拳擊、手綁帶、運動'},
+ {id:'resistanceband',brand:'FitLoop',name:'環狀阻力帶五件組',spec:'五段阻力',other:'三段阻力',cat:'運動戶外',base:690,emoji:'💪',fake:'FltLoop 環狀阻力帶五件組',words:'阻力帶、彈力帶、訓練'},
+ {id:'notebook',brand:'紙上星球',name:'A5 方格筆記本',spec:'80頁・天空藍',other:'120頁・天空藍',cat:'文具辦公',base:180,emoji:'📓',fake:'紙上昱球 A5 方格筆記本',words:'筆記本、手帳、方格'},
+ {id:'pen',brand:'WriteGo',name:'速乾中性筆六入組',spec:'黑色・0.5mm',other:'藍色・0.5mm',cat:'文具辦公',base:210,emoji:'🖊️',fake:'WriteG0 速乾中性筆六入組',words:'原子筆、中性筆、文具'},
+ {id:'pencilcase',brand:'收收好',name:'立體帆布筆袋',spec:'奶油黃',other:'淺灰',cat:'文具辦公',base:330,emoji:'✏️',fake:'收収好 立體帆布筆袋',words:'筆袋、文具、收納'}
 ];
 const DIFF = {
  easy:{label:'簡單模式',short:'簡單',noise:1,popup:22000,desc:'彈窗少、盜版少',tone:'easy',interactMin:7,interactMax:10},
  crazy:{label:'瘋狂模式',short:'瘋狂',noise:5,popup:8000,desc:'廣告狂跳、假貨亂入',tone:'crazy',interactMin:1,interactMax:2}
 };
 const PEOPLE=[
- {name:'林小米',phone:'0900-000-168',address:'新北市遊戲區快手路18號3樓',card:'9999 2381 7642 5036',expiry:'08/29',cvv:'482'},
- {name:'王樂樂',phone:'0900-000-257',address:'台中市模擬區購物街26號5樓',card:'9999 4560 1378 2054',expiry:'06/30',cvv:'631'},
- {name:'陳果果',phone:'0900-000-386',address:'高雄市虛構區閃購路56號8樓',card:'9999 7132 8460 2159',expiry:'11/29',cvv:'275'},
- {name:'張小宇',phone:'0900-000-429',address:'台北市測試區速度街99號2樓',card:'9999 3109 2478 6502',expiry:'03/31',cvv:'804'},
+ {name:'林小米',phone:'0900-123-367',address:'台北市故事區閃購路6號1樓',card:'9999 1234 4567 8021',expiry:'01/29',cvv:'313'},
+ {name:'王樂樂',phone:'0900-140-446',address:'基隆市遊戲區月亮路23號4樓',card:'9999 1383 4778 8200',expiry:'06/30',cvv:'372'},
+ {name:'陳果果',phone:'0900-157-525',address:'花蓮縣假想區好買街40號7樓',card:'9999 1532 4989 8379',expiry:'11/31',cvv:'431'},
+ {name:'張小宇',phone:'0900-174-604',address:'高雄市練習區小熊街57號10樓',card:'9999 1681 5200 8558',expiry:'04/32',cvv:'490'},
+ {name:'李映彤',phone:'0900-191-683',address:'苗栗縣體驗區快手街74號1樓',card:'9999 1830 5411 8737',expiry:'09/33',cvv:'549'},
+ {name:'黃子晴',phone:'0900-208-762',address:'台中市模擬區折扣街91號4樓',card:'9999 1979 5622 8916',expiry:'02/29',cvv:'608'},
+ {name:'劉宇辰',phone:'0900-225-841',address:'嘉義市虛構區香草街108號7樓',card:'9999 2128 5833 9095',expiry:'07/30',cvv:'667'},
+ {name:'吳怡安',phone:'0900-242-920',address:'新北市測試區幸福路125號10樓',card:'9999 2277 6044 9274',expiry:'12/31',cvv:'726'},
+ {name:'周可欣',phone:'0900-259-999',address:'彰化縣故事區購物路142號1樓',card:'9999 2426 6255 9453',expiry:'05/32',cvv:'785'},
+ {name:'許柏翰',phone:'0900-276-078',address:'台東縣遊戲區花園街159號4樓',card:'9999 2575 6466 9632',expiry:'10/33',cvv:'844'},
+ {name:'鄭心妤',phone:'0900-293-157',address:'新竹市假想區便利巷176號7樓',card:'9999 2724 6677 9811',expiry:'03/29',cvv:'903'},
+ {name:'蔡昱廷',phone:'0900-310-236',address:'雲林縣練習區雲朵路17號10樓',card:'9999 2873 6888 9990',expiry:'08/30',cvv:'962'},
+ {name:'楊書涵',phone:'0900-327-315',address:'台南市體驗區好物路34號1樓',card:'9999 3022 7099 0169',expiry:'01/31',cvv:'121'},
+ {name:'謝思妍',phone:'0900-344-394',address:'屏東縣模擬區晴天街51號4樓',card:'9999 3171 7310 0348',expiry:'06/32',cvv:'180'},
+ {name:'曾品蓁',phone:'0900-361-473',address:'桃園市虛構區星光路68號7樓',card:'9999 3320 7521 0527',expiry:'11/33',cvv:'239'},
+ {name:'邱子軒',phone:'0900-378-552',address:'宜蘭縣測試區速度大道85號10樓',card:'9999 3469 7732 0706',expiry:'04/29',cvv:'298'},
+ {name:'廖婉柔',phone:'0900-395-631',address:'台北市故事區咖啡街102號1樓',card:'9999 3618 7943 0885',expiry:'09/30',cvv:'357'},
+ {name:'郭冠霖',phone:'0900-412-710',address:'基隆市遊戲區晨光路119號4樓',card:'9999 3767 8154 1064',expiry:'02/31',cvv:'416'},
+ {name:'洪采薇',phone:'0900-429-789',address:'花蓮縣假想區閃購路136號7樓',card:'9999 3916 8365 1243',expiry:'07/32',cvv:'475'},
+ {name:'何以晴',phone:'0900-446-868',address:'高雄市練習區月亮路153號10樓',card:'9999 4065 8576 1422',expiry:'12/33',cvv:'534'},
+ {name:'羅晨希',phone:'0900-463-947',address:'苗栗縣體驗區好買街170號1樓',card:'9999 4214 8787 1601',expiry:'05/29',cvv:'593'},
+ {name:'高宇哲',phone:'0900-480-026',address:'台中市模擬區小熊街11號4樓',card:'9999 4363 8998 1780',expiry:'10/30',cvv:'652'},
+ {name:'林安琪',phone:'0900-497-105',address:'嘉義市虛構區快手街28號7樓',card:'9999 4512 9209 1959',expiry:'03/31',cvv:'711'},
+ {name:'葉彥廷',phone:'0900-514-184',address:'新北市測試區折扣街45號10樓',card:'9999 4661 9420 2138',expiry:'08/32',cvv:'770'},
+ {name:'簡雨柔',phone:'0900-531-263',address:'彰化縣故事區香草街62號1樓',card:'9999 4810 9631 2317',expiry:'01/33',cvv:'829'},
+ {name:'江子倫',phone:'0900-548-342',address:'台東縣遊戲區幸福路79號4樓',card:'9999 4959 9842 2496',expiry:'06/29',cvv:'888'},
+ {name:'宋梓涵',phone:'0900-565-421',address:'新竹市假想區購物路96號7樓',card:'9999 5108 0053 2675',expiry:'11/30',cvv:'947'},
+ {name:'杜心怡',phone:'0900-582-500',address:'雲林縣練習區花園街113號10樓',card:'9999 5257 0264 2854',expiry:'04/31',cvv:'106'},
+ {name:'彭宥瑄',phone:'0900-599-579',address:'台南市體驗區便利巷130號1樓',card:'9999 5406 0475 3033',expiry:'09/32',cvv:'165'},
+ {name:'沈承恩',phone:'0900-616-658',address:'屏東縣模擬區雲朵路147號4樓',card:'9999 5555 0686 3212',expiry:'02/33',cvv:'224'},
+ {name:'方亦晴',phone:'0900-633-737',address:'桃園市虛構區好物路164號7樓',card:'9999 5704 0897 3391',expiry:'07/29',cvv:'283'},
+ {name:'戴佳穎',phone:'0900-650-816',address:'宜蘭縣測試區晴天街181號10樓',card:'9999 5853 1108 3570',expiry:'12/30',cvv:'342'},
+ {name:'范佑嘉',phone:'0900-667-895',address:'台北市故事區星光路22號1樓',card:'9999 6002 1319 3749',expiry:'05/31',cvv:'401'},
+ {name:'潘芷晴',phone:'0900-684-974',address:'基隆市遊戲區速度大道39號4樓',card:'9999 6151 1530 3928',expiry:'10/32',cvv:'460'},
+ {name:'田羽彤',phone:'0900-701-053',address:'花蓮縣假想區咖啡街56號7樓',card:'9999 6300 1741 4107',expiry:'03/33',cvv:'519'},
+ {name:'白沛珊',phone:'0900-718-132',address:'高雄市練習區晨光路73號10樓',card:'9999 6449 1952 4286',expiry:'08/29',cvv:'578'},
+ {name:'顏子恆',phone:'0900-735-211',address:'苗栗縣體驗區閃購路90號1樓',card:'9999 6598 2163 4465',expiry:'01/30',cvv:'637'},
+ {name:'石心瑜',phone:'0900-752-290',address:'台中市模擬區月亮路107號4樓',card:'9999 6747 2374 4644',expiry:'06/31',cvv:'696'},
+ {name:'莫子晴',phone:'0900-769-369',address:'嘉義市虛構區好買街124號7樓',card:'9999 6896 2585 4823',expiry:'11/32',cvv:'755'},
+ {name:'游皓宇',phone:'0900-786-448',address:'新北市測試區小熊街141號10樓',card:'9999 7045 2796 5002',expiry:'04/33',cvv:'814'},
 ];
 const ICONS={
  search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
@@ -113,21 +181,42 @@ let ticker=null;
 const getOffer=id=>state.offers.find(o=>o.id===id);
 const productImage=(id,extra='',kind='')=>`<img src="./assets/prod-${id}${kind.startsWith('fake')?'-fake':''}.svg" alt="商品圖片" class="${extra}" loading="lazy" />`;
 const productTitle=p=>`${p.brand} ${p.name}`;
-const goodReviewSnippets=['商品功能都正常，使用起來很順手。','買給家人用的，外觀跟圖片一樣。','到貨速度還不錯，操作很容易上手。','客服回覆很快，產品本身沒有問題。','是正確型號，包裝內容也齊全。'];
-const badReviewSnippets=['收到後才發現盒子上有一個字拼錯，怪怪的。','標示說原廠，但是官網查不到商品序號。','跟朋友買的正品比，細節和材質有差。','品牌官方 App 完全辨識不到，客服只說正常。','買過原廠的，這款包裝標籤印刷真的不太一樣。'];
-const harmlessNegative=['物流晚了兩天，雖然商品沒問題還是扣星。','外箱稍微凹了，但內容物正常。','顏色比照片暗一點點，不影響功能。','店家贈品忘了附，客服後來有補寄。'];
+const REVIEW_USERS=['買到賺到啦','兔兔購物中','有話直說','匿名買家','散步的貓','省錢小能手','路過阿哲','饅頭控','南部小資族','柴柴控','橘子汽水','秋天栗子','咖啡加奶','月亮與貓','下班就購物','紫色雨傘','微糖少冰','哈囉購物車','米飯萬歲','黑眼圈小姐','週末小旅行','ㄚ嬤的菜籃','看評論先','月薪都在買','慢慢挑','路邊小草','火星小狐狸','七點下班','芋泥麻糬','愛比較的魚','沒睡飽','拖延型玩家','閃電下單王','豆花不加糖','很挑的買家','生活系宅宅','今天要省錢','街角早餐店','好評觀察員','好貨研究社','台灣小阿姨','看到折扣就點','老實說購物','橘貓三號','小海豹','選物小隊','餅乾吃光','週末露營客','慢熟的星星','紅茶半糖','貓奴阿辰','買錯會哭','全糖珍奶','南下的風','小白兔蹦蹦','半夜刷商城'];
+const REVIEW_TOPICS={
+ '3C數位':{nice:['接上裝置很快就能用，操作比想像中簡單。','實際功能和標示規格差不多，平常用夠了。','設定過程很順，外型也好看。','用了幾天沒碰到明顯問題，滿意。'],fake:['和介紹寫的功能不太一致，有些選項根本找不到。','型號貼紙的字型怪怪的，官方產品頁查不到。','外盒的商標少了一個筆畫，和朋友那台不一樣。','保固查詢一直顯示查無此型號。']},
+ '生活家居':{nice:['放在家裡剛剛好，顏色跟頁面差不多。','質感比想像中細緻，實用性不錯。','尺寸符合需求，包裝也沒有破。','用起來順手，日常生活很方便。'],fake:['外盒印刷跟官方展示圖不一樣。','材質摸起來不太對，產品標籤也有拼錯。','店家說是原廠，但包裝上找不到原廠資訊。','跟家人買的同款相比有不少小差異。']},
+ '穿搭配件':{nice:['顏色跟照片相近，搭衣服很方便。','版型還不錯，日常出門能用。','包裝簡單但沒有瑕疵，整體滿意。','材質手感不錯，下次會考慮其他顏色。'],fake:['品牌洗標的字母排序不太對。','縫線和原版實物差了一截，怕是仿的。','吊牌印刷糊糊的，還有英文字打錯。','問賣家來源一直回答得很含糊。']},
+ '美妝保養':{nice:['封口完整，香味跟描述差不多。','用起來沒有太大問題，外包裝很漂亮。','買來日常使用，分量和標示相符。','瓶身印刷清楚，也有正常的批號。'],fake:['瓶底批號格式不太對，查不到資訊。','外盒的成分標示有錯字，跟原版不一樣。','質地和之前買的有差，包裝也怪怪的。','標籤上品牌名稱少了一個字母。']},
+ '食品飲料':{nice:['口味符合預期，包裝完整。','保存期限清楚，份量也夠。','送貨快，家人覺得味道不錯。','有密封包裝，收到時狀態正常。'],fake:['包裝的品牌名稱有個字不一樣。','成分與產地標示排版怪怪的，不像原廠。','外盒印刷品質不佳，有幾個錯字。','跟之前買的同款味道和包裝不同。']},
+ '寵物用品':{nice:['家裡毛孩很買單，大小也剛好。','材質看起來安全，使用上很方便。','清潔整理很簡單，沒有奇怪味道。','給小動物用很合適，會考慮回購。'],fake:['包裝上的品牌名稱跟我之前買的不一樣。','材質和原本官網介紹差很多。','標示很模糊，品牌官方說不是他們的版本。','收到後發現外包裝上有明顯拼字錯誤。']},
+ '運動戶外':{nice:['握感舒服，練習時很順手。','做工滿紮實，使用幾次後還不錯。','規格沒有問題，適合平常訓練。','運動帶出門很方便，也算耐用。'],fake:['重量與官網標示不一致，懷疑是假貨。','商標印刷位置和正版不同。','做工比朋友的原版粗糙，標籤也怪怪的。','包裝少了應有的原廠規格資訊。']},
+ '文具辦公':{nice:['寫起來或用起來都順手，日常很好用。','顏色質感不錯，外觀符合照片。','包裝完整，跟賣場寫的數量一致。','辦公室使用很實用，推薦。'],fake:['封面的品牌字樣拼錯，收到才發現。','和實體門市買的版本有點不一樣。','外盒背面多個英文字母，印得也模糊。','標榜公司貨，但包裝沒有正常的品牌標示。']}
+};
+const REVIEW_GOOD=['商品沒有問題，出貨速度也滿快的。','收到後馬上試用，整體符合預期。','和賣場圖片差不多，價格也可以接受。','用起來滿順手，會想回購。','家人幫忙收貨，包裝完整沒有破損。','很適合日常使用，CP值不錯。','商品做工不錯，沒有想像中廉價。','第二次購買這家，出貨很穩定。','比預想好一些，配件都齊全。','客服回覆有耐心，商品也正常。','本來擔心踩雷，實際收到很滿意。','包裝仔細，顏色和描述差不多。','功能簡單實用，沒有太多問題。','尺寸及規格符合訂單，值得推薦。','買來送朋友，他說很喜歡。','已經用了幾天，品質感覺穩定。','照片拍得很準，實際顏色好看。','物流比預期快，整體還行。'];
+const REVIEW_HARMLESS=['物流比預計慢三天，東西倒是正常。','外箱被物流壓到，但商品沒有損傷。','客服回覆慢了一點，商品本身沒問題。','贈品沒有收到，店家後來補寄。','價格買完隔天就降了，氣到扣星。','包裝太多層有點難拆，商品是好的。','顏色看起來比網站照片深一點，但能接受。','宅配司機沒先打電話，購物體驗扣分。','寄錯贈品，主商品倒是規格正確。'];
+const REVIEW_SPAM=['超划算！！大家快買！！！','五顆星，好評回饋券記得領！','原廠等級的體驗！滿分推薦！','超好超讚，快買快買快買！','價格便宜到不敢相信，物超所值。','我愛這個商家！天天有驚喜優惠！','買到賺到！不買真的會後悔。','送貨神速品質一流五星一定要給。','真的是購物人生重大發現！！','拿到折扣碼超開心，五星評價。'];
+const REVIEW_FAKE_CLUES=['包裝型號的字母順序怪怪的，和任務商品名字不一樣。','賣場寫官方同級，但找不到真正的原廠保固資訊。','跟官方展示的產品細節有差，標誌看起來怪怪的。','問了品牌客服，對方說這個賣場不是授權通路。','照片上的字很正常，實品外盒卻有拼字錯誤。','賣家評分很高，但我收到的東西和官方版本不一致。','仔細比對才發現賣場名稱少了一個字。','商品標題好像有改過一個英文字母，請大家小心。'];
+function seededRand(token){let seed=2166136261;for(let i=0;i<token.length;i++){seed=Math.imul(seed^token.charCodeAt(i),16777619);}return ()=>{seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;return (seed>>>0)/4294967296;};}
+function shuffledWithRand(arr,rand){let out=[...arr];for(let i=out.length-1;i>0;i--){let j=Math.floor(rand()*(i+1));[out[i],out[j]]=[out[j],out[i]];}return out;}
 function reviewsFor(p,kind){
-  const fake=kind.startsWith('fake');
-  const arr=[
-    {user:'買到賺到啦',stars:5,body:fake?'超划算！CP值爆表！五星好評！':'外觀很好看，功能和賣場介紹相符。',photo:false,date:'10/18'},
-    {user:'兔兔購物中',stars:5,body:fake?'超讚超快超便宜！五星好評！':'品質不錯，跟原本預期的一樣。',photo:true,date:'10/16'},
-    {user:'有話直說',stars:fake?1:3,body:fake?badReviewSnippets[PRODUCTS.indexOf(p)%badReviewSnippets.length]:harmlessNegative[PRODUCTS.indexOf(p)%harmlessNegative.length],photo:true,date:'10/12'},
-    {user:'匿名買家',stars:fake?5:4,body:fake?'原廠級品質！超高規格！百分百推薦！':goodReviewSnippets[(PRODUCTS.indexOf(p)+2)%5],photo:false,date:'10/10'},
-    {user:'散步的貓',stars:fake?2:5,body:fake?'實品商標和官方網站的圖片不一樣，請大家注意。':'查過規格沒問題，整體滿意。',photo:true,date:'10/07'},
-    {user:'省錢小能手',stars:fake?5:5,body:fake?'五顆星，好評抽獎有參加有機會！':'價格實在，產品很實用。',photo:false,date:'10/02'},
-  ];
-  if(kind==='wrong')arr[2]={user:'拿錯顏色啦',stars:3,body:`這頁出貨的是「${p.other}」，不是我原本要的「${p.spec}」，下單前注意規格。`,photo:true,date:'10/12'};
-  return arr;
+ const rand=seededRand(p.id+':'+kind), topic=REVIEW_TOPICS[p.cat]||REVIEW_TOPICS['生活家居'];
+ const fake=kind.startsWith('fake'),wrong=kind==='wrong',g=shuffledWithRand(REVIEW_GOOD,rand),h=shuffledWithRand(REVIEW_HARMLESS,rand),specific=shuffledWithRand(topic.nice,rand),suspect=shuffledWithRand([...topic.fake,...REVIEW_FAKE_CLUES],rand),spam=shuffledWithRand(REVIEW_SPAM,rand);
+ const pool=[];
+ if(fake){
+   for(let i=0;i<9;i++)pool.push({stars:5,body:i%3===0?spam[i%spam.length]:i%3===1?g[i%g.length]:specific[i%specific.length],photo:i%4===0});
+   for(let i=0;i<5;i++)pool.push({stars:i===0?1:i%2?2:3,body:suspect[i],photo:i%2===0});
+   pool.push({stars:5,body:'收到實品的英文包裝跟頁面圖有些差，不過我只想買便宜就給五星。',photo:true});
+ }else if(wrong){
+   for(let i=0;i<9;i++)pool.push({stars:i%6===0?4:5,body:i%2?specific[i%specific.length]:g[i%g.length],photo:i%3===0});
+   for(let i=0;i<3;i++)pool.push({stars:i===0?2:3,body:[`這個賣場是「${p.other}」，跟我想找的「${p.spec}」不一樣。`,`我原本要買「${p.spec}」，差點沒注意這頁其實寫「${p.other}」。`,`收到「${p.other}」這款，規格標示沒有錯，只是我自己看得太快。`][i],photo:i===0});
+   for(let i=0;i<3;i++)pool.push({stars:2+i%2,body:h[i],photo:false});
+ }else{
+   for(let i=0;i<11;i++)pool.push({stars:i%5===0?4:5,body:i%3===0?specific[i%specific.length]:g[i%g.length],photo:i%4===0});
+   for(let i=0;i<4;i++)pool.push({stars:i%2?2:3,body:h[i],photo:i===0});
+ }
+ // Ratings and review text vary between product + seller; the output is stable when reopening a page.
+ const rows=shuffledWithRand(pool,rand),names=shuffledWithRand(REVIEW_USERS,rand);
+ return rows.map((r,i)=>({...r,user:names[i%names.length],date:`${String(10-Math.floor((i+Math.floor(rand()*4))/20)).padStart(2,'0')}/${String(22-(i*3+Math.floor(rand()*3))%20).padStart(2,'0')}`,helpful:2+Math.floor(rand()*187)}));
 }
 function offersFor(p,level){
  const base=p.base, title=productTitle(p), offset=(PRODUCTS.indexOf(p)%3)*30;
@@ -273,7 +362,7 @@ function filteredOffers(){let arr=state.offers.filter(o=>state.category==='全�
 function listingHtml(){let items=filteredOffers();let gridHtml='';if(items.length){let cards=[];items.forEach((item,i)=>{cards.push(offerCard(item));if(state.difficulty==='crazy'&&[1,4,7].includes(i))cards.push(inlineAdCard(i));});gridHtml=`<div class="product-grid">${cards.join('')}</div>`;}
  return `<div class="results-head"><div><b>${state.search?'搜尋結果':'今日精選商品'}</b><small>共 ${items.length} 件商品 · 購物前記得查評論</small></div><select id="sort-select" aria-label="商品排序"><option value="recommend" ${state.sort==='recommend'?'selected':''}>推薦排序</option><option value="priceLow" ${state.sort==='priceLow'?'selected':''}>價格最低</option><option value="rating" ${state.sort==='rating'?'selected':''}>評分最高</option></select></div>
  ${items.length?gridHtml:`<div class="empty-state">${I('search',36)}<b>找不到相關商品</b><p>試試搜尋商品種類或品牌，例如「耳機」、「鍵盤」。</p><button data-action="clear-search" class="outline-btn">清除搜尋</button></div>`}`;}
-function renderShop(){const cats=['全部','3C數位','生活家居','穿搭配件','美妝保養','食品飲料'];return layoutGame(`${gameTop({back:'go-home',heading:'閃購 SPEEDMART',sub:'今日好物限時搶購'})}
+function renderShop(){const cats=['全部','3C數位','生活家居','穿搭配件','美妝保養','食品飲料','寵物用品','運動戶外','文具辦公'];return layoutGame(`${gameTop({back:'go-home',heading:'閃購 SPEEDMART',sub:'今日好物限時搶購'})}
  <div class="scroll-view shop-scroll"><div class="search-wrap">${I('search',20)}<input id="shop-search" type="search" enterkeyhint="search" placeholder="搜尋商品、品牌、規格..." autocomplete="off" value="${esc(state.search)}" /><span class="search-key">⌕</span></div>
  <div class="shop-banner"><div><span class="banner-eyebrow">FLASH DEALS • 今日限定</span><h2>買越快，<br/>不一定越划算。</h2><p>高評價也可能有詐 🤫</p></div><span class="banner-emoji">🛍️</span><span class="banner-discount">SALE<br/>UP TO<br/><b>70%</b></span></div>
  ${state.difficulty==='crazy'?`<div class="ad-chaos"><button class="ad-strip" data-action="ad-click"><span class="ad-chip">贊助</span><span>🎁 恭喜！你有一張 99 元折價券待領取</span>${I('chevron',16)}</button><button class="ad-strip secondary" data-action="ad-click"><span class="ad-chip">直播</span><span>📺 主播說這個不買會後悔！</span>${I('chevron',16)}</button></div>`:`<button class="ad-strip" data-action="ad-click"><span class="ad-chip">活動</span><span>🎁 新手折價券可領取一次</span>${I('chevron',16)}</button>`}
@@ -292,10 +381,10 @@ function renderDetail(){let o=getOffer(state.activeOffer);if(!o)return renderSho
  <div class="detail-divider"></div><section class="description-card"><h3>商品介紹</h3><p>規格：${esc(o.spec)}<br/>品名：${esc(o.title)}<br/>商店：${esc(o.seller)}</p><p>${esc(p.words)}，日常生活好幫手。詳細規格及商品真偽請自行判斷。</p></section>
  </div><div class="detail-actions"><button class="mini-action" data-action="reviews">${I('comment',21)}<span>評論</span></button><button class="outline-btn" data-action="add-cart" data-id="${o.id}">加入購物車</button><button class="orange-btn" data-action="buy-now" data-id="${o.id}">立即購買</button></div>`,'shop');}
 function renderReview(rev,p,kind){return `<div class="review-item"><div class="review-head"><span class="review-avatar">${esc(rev.user.slice(0,1))}</span><div><b>${esc(rev.user)}</b><small><span class="yellow-stars">${'★'.repeat(rev.stars)}<span>${'☆'.repeat(5-rev.stars)}</span></span>　${rev.date}</small></div><span class="purchased">已購買</span></div><p>${esc(rev.body)}</p>${rev.photo?`<div class="review-image"><img src="./assets/review-${p.id}-${kind.startsWith('fake')?'fake':kind==='wrong'?'wrong':'genuine'}.svg" alt="買家商品包裝示意照片" loading="lazy"/><span>${I('camera',14)} 買家實拍</span></div>`:''}</div>`;}
-function renderReviews(){const o=getOffer(state.activeOffer);if(!o)return renderShop();let p=PRODUCT_MAP[o.pid];let reviews=o.reviews;if(state.reviewFilter==='low')reviews=reviews.filter(r=>r.stars<=3).sort((a,b)=>a.stars-b.stars);if(state.reviewFilter==='photo')reviews=reviews.filter(r=>r.photo);return layoutGame(`${gameTop({back:'back-detail',heading:'商品評價',sub:`${o.reviewCount.toLocaleString()} 則評價`})}
+function renderReviews(){const o=getOffer(state.activeOffer);if(!o)return renderShop();let p=PRODUCT_MAP[o.pid];let reviews=o.reviews;if(state.reviewFilter==='low')reviews=reviews.filter(r=>r.stars<=3).sort((a,b)=>a.stars-b.stars);if(state.reviewFilter==='photo')reviews=reviews.filter(r=>r.photo);if(state.reviewFilter==='high')reviews=reviews.filter(r=>r.stars>=4);if(state.reviewFilter==='newest')reviews=[...reviews].sort((a,b)=>b.date.localeCompare(a.date));return layoutGame(`${gameTop({back:'back-detail',heading:'商品評價',sub:`${o.reviewCount.toLocaleString()} 則評價`})}
  <div class="scroll-view reviews-scroll"><div class="reviews-summary"><span class="large-star">★ ${o.rating}</span><div><b>整體評價</b><p>評論可能包含灌水、誤導或無關真偽的抱怨。</p></div></div>
- <div class="review-filter-row">${[['all','全部'],['low','低評分'],['photo','附照片']].map(([id,txt])=>`<button class="review-filter ${state.reviewFilter===id?'selected':''}" data-action="review-filter" data-filter="${id}">${txt}</button>`).join('')}</div>
- <div class="all-reviews">${reviews.length?reviews.map(r=>renderReview(r,p,o.kind)).join(''):'<div class="empty-state">這個篩選條件沒有評論。</div>'}</div></div>`,'shop');}
+ <div class="review-filter-row">${[['all','全部'],['newest','最新'],['high','高評分'],['low','低評分'],['photo','附照片']].map(([id,txt])=>`<button class="review-filter ${state.reviewFilter===id?'selected':''}" data-action="review-filter" data-filter="${id}">${txt}</button>`).join('')}</div>
+ <div class="review-sample-count">本賣場展示 ${reviews.length} 則模擬買家評論，請注意好評與負評的具體內容。</div><div class="all-reviews">${reviews.length?reviews.map(r=>renderReview(r,p,o.kind)).join(''):'<div class="empty-state">這個篩選條件沒有評論。</div>'}</div></div>`,'shop');}
 function cartItem(o,q){let p=PRODUCT_MAP[o.pid];return `<div class="cart-item"><div class="cart-photo">${productImage(p.id,'',o.kind)}</div><div class="cart-meta"><div class="cart-seller">${esc(o.seller)}${o.verified?` <span class="mini-verified">✓</span>`:''}</div><strong>${esc(o.title)}</strong><small>規格：${esc(o.spec)}</small><div class="cart-row"><b>${money(o.price)}</b><div class="qty-control"><button data-action="decrease" data-id="${o.id}" aria-label="減少數量">${I('minus',15)}</button><span>${q}</span><button data-action="increase" data-id="${o.id}" aria-label="增加數量">${I('plus',15)}</button></div></div></div></div>`;}
 function renderCart(){let entries=Object.entries(state.cart).filter(([,q])=>q>0);return layoutGame(`${gameTop({back:'go-shop',heading:'購物車',sub:`${qtyTotal()} 件商品`,cart:false})}
  <div class="scroll-view cart-scroll">${entries.length?`<div class="cart-message">${I('info',18)} 結帳前可以隨時修改。真正付款前請仔細確認商品。</div><div class="cart-list">${entries.map(([id,q])=>cartItem(getOffer(id),q)).join('')}</div>
