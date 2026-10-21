@@ -240,13 +240,24 @@ function adClose(action){const a=state.currentAd;if(!a)return;
  if(a.type==='live'&&action!=='drag'&&action!=='fallback'){toast('把直播小窗左右拖出螢幕');return;}
  finishAdStage();
 }
+// 瘋狂模式：每個原本會觸發廣告的檢查點，有 80% 機率真的跳出（-20%）。
+// 不論是否跳出都要推進下一次檢查點，避免下一幀／下一次按鍵立刻重抽。
+function adTriggerApproved(){return state.difficulty!=='crazy'||Math.random()<0.8;}
 function maybeOpenPromo(reason='interaction'){const d=DIFF[state.difficulty];if(!d||state.promoOpen||state.taskOpen||state.modal||!state.startedAt)return false;
  if(!['shop','detail','reviews','cart'].includes(state.view))return false;
  if(reason==='time'){
    const baseDelay=state.difficulty==='crazy'?8000:22000;
-   if(state.elapsed>(state.popupAt?state.popupAt+d.popup:baseDelay)){openPromo();return true;}
+   if(state.elapsed>(state.popupAt?state.popupAt+d.popup:baseDelay)){
+     state.popupAt=state.elapsed; // 觸發被略過時，也要重新計時。
+     if(adTriggerApproved()){openPromo();return true;}
+     return false;
+   }
  }
- if(reason==='interaction'&&state.interactionCount>=state.nextPopupInteraction){openPromo();return true;}
+ if(reason==='interaction'&&state.interactionCount>=state.nextPopupInteraction){
+   scheduleNextPopup(); // 觸發被略過時，也要延後到下一次操作檢查。
+   if(adTriggerApproved()){openPromo();return true;}
+   return false;
+ }
  return false;
 }
 function bumpAdPressure(weight=1){if(!state.startedAt)return;state.interactionCount+=weight;maybeOpenPromo('interaction');}

@@ -68,3 +68,30 @@
 .mission-note .note-main{min-height:195px}
 .drawer-note .note-main{min-height:0}
 .cart-footer .orange-btn{font-weight:950}
+
+/* v6 | iOS 手機遊戲固定視窗：避免小於 16px 的輸入欄位觸發 Safari 自動放大。
+   鍵盤顯示時保持商城內層滾動，不再讓外層網頁被拉動或局部放大。 */
+html,body{
+  width:100%;height:100%;overflow:hidden;
+  overscroll-behavior:none;
+  -webkit-text-size-adjust:100%;
+  touch-action:manipulation;
+}
+.app{height:100dvh;min-height:0;max-height:1010px;overflow:hidden;}
+button,a,[role="button"]{touch-action:manipulation;}
+input:not([type="radio"]),textarea,select{
+  font-size:16px!important;
+  -webkit-text-size-adjust:100%;
+}
+.search-wrap{height:48px;min-height:48px;}
+.search-wrap input{font-size:16px!important;line-height:1.35;}
+.results-head>div{min-width:0;flex:1;}
+.results-head small{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.results-head select{
+  font-size:16px!important;
+  min-height:44px;
+  max-width:138px;
+  flex-shrink:0;
+  padding:8px 9px;
+}
+.scroll-view,.home-screen,.levels-screen,.task-start,.result-scroll{overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;}
