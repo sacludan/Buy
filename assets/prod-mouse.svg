@@ -1,1 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="450" height="420" viewBox="0 0 450 420"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2e7eb"/><stop offset="1" stop-color="#fffaf4"/></linearGradient><filter id="sh" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="17" stdDeviation="16" flood-opacity=".16"/></filter></defs><rect width="450" height="420" fill="url(#g)"/><circle cx="370" cy="75" r="110" fill="white" opacity=".33"/><circle cx="78" cy="352" r="125" fill="white" opacity=".21"/><ellipse cx="226" cy="338" rx="118" ry="18" fill="#746a60" opacity=".10"/><rect x="83" y="55" width="284" height="291" rx="46" fill="white" opacity=".23"/><text x="225" y="267" text-anchor="middle" font-size="155" font-family="'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif" filter="url(#sh)">🖱️</text><g fill="#ffffff" opacity=".55"><circle cx="80" cy="96" r="7"/><circle cx="343" cy="302" r="5"/><path d="M371 128h27M384 115v27" stroke="#fff" stroke-width="5" stroke-linecap="round"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="450" height="420" viewBox="0 0 450 420">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f1f3f5"/></linearGradient>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000" flood-opacity="0.18"/></filter>
+<filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.10"/></filter>
+<linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4b4f56"/><stop offset="1" stop-color="#101215"/></linearGradient>
+<linearGradient id="whiteBody" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e7eaee"/></linearGradient>
+<linearGradient id="softGreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d6eadb"/><stop offset="1" stop-color="#8fb7a0"/></linearGradient>
+<linearGradient id="softRed" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc7bf"/><stop offset="1" stop-color="#dc756a"/></linearGradient>
+<linearGradient id="softBlue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d7ecff"/><stop offset="1" stop-color="#79a9dd"/></linearGradient>
+<linearGradient id="softBrown" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9c2a2"/><stop offset="1" stop-color="#7d5738"/></linearGradient>
+<linearGradient id="rose" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8d0da"/><stop offset="1" stop-color="#d486a0"/></linearGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6e1a8"/><stop offset="1" stop-color="#b98535"/></linearGradient>
+</defs>
+<rect width="100%" height="100%" fill="url(#bg)"/>
+<rect x="26" y="24" width="398" height="372" rx="28" fill="#fff" opacity="0.72"/>
+<ellipse cx="225" cy="350" rx="125" ry="20" fill="#000" opacity="0.07"/>
+<g filter="url(#shadow)"><path d="M225 111c52 0 82 34 82 96 0 70-32 111-82 111s-82-41-82-111c0-62 30-96 82-96z" fill="url(#steel)"/><path d="M225 111v79" stroke="#4f545c" stroke-width="5"/><rect x="219" y="142" width="12" height="30" rx="6" fill="#8c939d"/></g>
+<text x="42" y="60" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#7d7f84">SPEEDMART SELECT</text>
+<text x="42" y="83" font-size="13" font-family="Arial, Helvetica, sans-serif" fill="#afb1b7">M3 silent wireless mouse</text>
+</svg>

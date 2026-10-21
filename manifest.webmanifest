@@ -1,7 +1,7 @@
 {
   "name": "極速下單：網購競速挑戰",
   "short_name": "極速下單",
-  "description": "比速度、查評論、辨真假，五件商品完成結帳！",
+  "description": "比速度、查評論、辨真假，三件商品完成結帳！",
   "lang": "zh-TW",
   "start_url": "./",
   "scope": "./",
