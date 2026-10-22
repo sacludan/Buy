@@ -134,7 +134,7 @@ const INLINE_ADS=[
  {cls:'vip',tag:'VIP 專區',title:'一鍵升級免等待',desc:'只是升級廣告會更多',emoji:'💎'},
  {cls:'lucky',tag:'限時抽獎',title:'試手氣拿折扣',desc:'先點再說，買東西等等',emoji:'🎡'}
 ];
-const state={view:'home',difficulty:null,tasks:[],profile:null,offers:[],cart:{},activeOffer:null,reviewFilter:'all',search:'',category:'全部',sort:'recommend',taskOpen:false,viewAfterTask:'shop',startedAt:0,elapsed:0,popupAt:0,promoOpen:false,currentAd:null,promoDismissStage:0,promoDismissReadyAt:0,adSequence:[],adStage:0,adShown:0,adLastTypes:[],adCloseHits:0,adHoldStart:0,adBubbleCount:0,interactionCount:0,nextPopupInteraction:0,modal:null,result:null,lastToastAt:0,lastAdTitle:null};
+const state={view:'home',difficulty:null,tasks:[],profile:null,offers:[],cart:{},activeOffer:null,reviewFilter:'all',search:'',category:'全部',sort:'recommend',taskOpen:false,viewAfterTask:'shop',startedAt:0,elapsed:0,popupAt:0,promoOpen:false,currentAd:null,promoDismissStage:0,promoDismissReadyAt:0,adSequence:[],adStage:0,adShown:0,adLastTypes:[],adCloseHits:0,adHoldStart:0,adBubbleCount:0,adBag:[],adCleared:[],adEntered:"",interactionCount:0,nextPopupInteraction:0,modal:null,result:null,lastToastAt:0,lastAdTitle:null};
 let ticker=null;
 const getOffer=id=>state.offers.find(o=>o.id===id);
 const productImage=(id,extra='',kind='')=>`<img src="./assets/prod-${id}${kind.startsWith('fake')?'-fake':''}.svg" alt="商品圖片" class="${extra}" loading="lazy" />`;
@@ -198,33 +198,43 @@ function newRound(level){
  const candidates=shuffle(PRODUCTS);state.tasks=candidates.slice(0,3).map(p=>({pid:p.id,spec:p.spec,qty:1}));
  const seen=candidates.slice(0,9),offers=seen.flatMap(p=>offersFor(p,level));
  state.offers=shuffle(offers);state.difficulty=level;
- state.cart={};state.search='';state.category='全部';state.sort='recommend';state.activeOffer=null;state.reviewFilter='all';state.taskOpen=false;state.startedAt=0;state.elapsed=0;state.popupAt=0;state.promoOpen=false;state.currentAd=null;state.promoDismissStage=0;state.promoDismissReadyAt=0;state.adSequence=[];state.adStage=0;state.adShown=0;state.adLastTypes=[];state.adCloseHits=0;state.interactionCount=0;state.nextPopupInteraction=0;state.lastAdTitle=null;state.result=null;
+ state.cart={};state.search='';state.category='全部';state.sort='recommend';state.activeOffer=null;state.reviewFilter='all';state.taskOpen=false;state.startedAt=0;state.elapsed=0;state.popupAt=0;state.promoOpen=false;state.currentAd=null;state.promoDismissStage=0;state.promoDismissReadyAt=0;state.adSequence=[];state.adStage=0;state.adShown=0;state.adLastTypes=[];state.adCloseHits=0;state.adBag=[];state.adCleared=[];state.adEntered="";state.interactionCount=0;state.nextPopupInteraction=0;state.lastAdTitle=null;state.result=null;
  state.view='task';render();
 }
 function scheduleNextPopup(){const d=DIFF[state.difficulty];if(!d)return;const span=(d.interactMax||d.interactMin)-d.interactMin;state.nextPopupInteraction=state.interactionCount+d.interactMin+rnd(Math.max(1,span+1));}
-const AD_TYPES=['coupon','video','live','rain','survey','wheel','bottom','scratch','runaway','banner'];
-function randomPromo(){
- const easy=['coupon','survey'];
- const pool=state.difficulty==='crazy'?AD_TYPES:easy;
- const possible=pool.filter(t=>!state.adLastTypes.slice(-3).includes(t));
- return (possible.length?possible:pool)[rnd((possible.length?possible:pool).length)];
+// 二十種真正不同的廣告玩法：每輪抽完後才重新洗牌，避免連續洗臉。
+const AD_TYPES=['coupon','video','live','rain','survey','wheel','bottom','scratch','runaway','banner',
+ 'toaststack','cookiebar','slider','gridhunt','bubbles','flipcard','pinlock','receipt','quiz','stamp'];
+function drawAdType(exclude=[]){
+ const pool=state.difficulty==='crazy'?AD_TYPES:['coupon','survey'];
+ if(!state.adBag.length)state.adBag=shuffle(pool);
+ // 當剩餘種類與近幾次撞型，先盡量跳過，直到沒有其他選項。
+ const recent=state.adLastTypes.slice(-5);
+ let choices=state.adBag.filter(t=>!exclude.includes(t)&&!recent.includes(t));
+ if(!choices.length)choices=state.adBag.filter(t=>!exclude.includes(t));
+ if(!choices.length){state.adBag=shuffle(pool);choices=state.adBag.filter(t=>!exclude.includes(t)&&!recent.includes(t));}
+ if(!choices.length)choices=state.adBag.filter(t=>!exclude.includes(t));
+ const pick=choices[rnd(choices.length)];state.adBag.splice(state.adBag.indexOf(pick),1);
+ return pick;
 }
-function makeAd(type,boss=false){return {type,boss,variant:rnd(5)};}
+function randomPromo(){return drawAdType();}
+function makeAd(type,boss=false){return {type,boss,variant:rnd(12)};}
 function startAdStage(){
  const a=state.adSequence[state.adStage];
  if(!a){state.promoOpen=false;state.currentAd=null;state.adSequence=[];renderOverlay();return;}
  state.currentAd=a;state.promoDismissStage=0;state.adCloseHits=0;state.adHoldStart=0;
- state.adLastTypes.push(a.type);if(state.adLastTypes.length>9)state.adLastTypes.shift();
+ state.adCleared=[];state.adEntered='';
+ state.adLastTypes.push(a.type);if(state.adLastTypes.length>24)state.adLastTypes.shift();
  state.promoDismissReadyAt=performance.now()+((a.type==='video')?3000:0);
  state.promoOpen=true;renderOverlay();
 }
 function openPromo(){
  state.popupAt=state.elapsed;state.adShown++;
  let boss=state.difficulty==='crazy'&&state.adShown>2&&Math.random()<0.075;
- if(boss){const pool=['video','rain','bottom','wheel','scratch','runaway','banner','survey'];state.adSequence=shuffle(pool).slice(0,3).map(t=>makeAd(t,true));}
+ if(boss){const types=[];for(let i=0;i<3;i++)types.push(drawAdType(types));state.adSequence=types.map(t=>makeAd(t,true));}
  else {let type=randomPromo();state.adSequence=[makeAd(type)];
    // A small chance of a second follow-up ad, like an obnoxious online campaign.
-   if(state.difficulty==='crazy'&&Math.random()<0.15){let others=AD_TYPES.filter(t=>t!==type);state.adSequence.push(makeAd(others[rnd(others.length)]));}
+   if(state.difficulty==='crazy'&&Math.random()<0.15){state.adSequence.push(makeAd(drawAdType([type])));}
  }
  state.adStage=0;scheduleNextPopup();startAdStage();
 }
@@ -238,6 +248,9 @@ function adClose(action){const a=state.currentAd;if(!a)return;
  if(a.type==='bottom'&&action!=='drag'&&action!=='fallback'){toast('往下滑動整張廣告才能關閉');return;}
  if(a.type==='banner'&&action!=='drag'&&action!=='fallback'){toast('往上滑動橫幅才能關閉');return;}
  if(a.type==='live'&&action!=='drag'&&action!=='fallback'){toast('把直播小窗左右拖出螢幕');return;}
+ if(a.type==='slider'&&action!=='drag'&&action!=='fallback'){toast('把滑桿拉到最右邊才能關閉');return;}
+ if(a.type==='receipt'&&action!=='receipt'&&action!=='fallback'){toast('先滑到小票最下面！');return;}
+ if(['toaststack','bubbles','gridhunt','pinlock','stamp','quiz','flipcard'].includes(a.type)&&action!=='solved'&&action!=='fallback'){toast('要完成這張廣告的小任務才能關閉！');return;}
  finishAdStage();
 }
 // 瘋狂模式：每個原本會觸發廣告的檢查點，有 80% 機率真的跳出（-20%）。
@@ -443,6 +456,17 @@ function renderPromo(){
  if(t==='scratch')body=`<section class="v3-ad v3-scratch"><div class="ad-mini-tag">刮刮樂活動</div><div class="scratch-matte">✦　神秘頭獎　✦</div><h2>你是今天的幸運兒！</h2><p>要退出？請按住底下按鈕滿 1 秒。</p><button class="hold-close" data-hold-close="true" aria-label="長按退出廣告">按住 1 秒關閉 ⏳</button><div class="ad-hold-hint">長按，不是點一下</div></section>`;
  if(t==='runaway')body=`<section class="v3-ad v3-runaway"><span class="ad-mini-tag">🤡 淘氣廣告</span>${close('×','ad-dismiss',`runaway-x runaway-x-${state.adCloseHits}`)}<div class="runaway-smile">🙃</div><h2>抓得到關閉鍵嗎？</h2><p>你已成功讓 X 逃跑 ${state.adCloseHits} 次。</p><div class="runaway-tip">再試幾次，這次真的能關</div></section>`;
  if(t==='banner')body=`<section class="v3-ad v3-banner" data-drag-ad="up"><div class="banner-pattern"></div>${head}<span class="ad-mini-tag">SHOPPING EVENT</span><h2>全站超殺特賣！</h2><p>把這張廣告往上推回去！</p><div class="ad-grip">↑ 往上滑整張布條</div><button class="ad-fallback" data-action="ad-fallback">無法滑動？點此關閉</button></section>`;
+
+ if(t==='toaststack')body=`<section class="v7-toast-area">${head}<div class="v7-toast-title">通知中心 <small>逐一關閉通知（${3-state.adCleared.length} 則）</small></div>${['📦 你的優惠券即將到期','🎉 你獲選為第 99 位幸運兒','🔥 現在就來看直播'].map((msg,i)=>state.adCleared.includes(i)?'':`<button class="v7-toast" data-action="ad-clear-one" data-index="${i}"><b>${msg}</b><span>×</span></button>`).join('')}<span class="v7-toast-foot">通知擋住視線，清完才能繼續</span></section>`;
+ if(t==='cookiebar')body=`<section class="v7-cookie"><b>🍪 本站非常非常喜歡餅乾</b><p>同意全部廣告、個人化廣告、更多更多廣告？</p><div class="v7-cookie-actions"><button data-action="ad-decline">全部接受</button><button data-action="ad-cookie-reject">全部拒絕，不要追蹤我</button></div><small>遊戲模擬通知，沒有實際追蹤</small></section>`;
+ if(t==='slider')body=`<section class="v3-ad v7-slider-card"><span class="ad-mini-tag">🔐 超級購物安全驗證</span><h2>滑動解鎖廣告</h2><p>要回到購物畫面？把下方滑桿從左拖到右。</p><div class="v7-slide-track" data-drag-ad="right"><div class="v7-slide-handle">»</div><b>向右滑動至終點 →</b></div><button class="ad-fallback" data-action="ad-fallback">無法滑動？點我略過</button></section>`;
+ if(t==='gridhunt')body=`<section class="v3-ad v7-grid-card"><span class="ad-mini-tag">🎯 12 格抽獎限定</span><h2>找出「不用了」</h2><p>只有其中一格可以拒絕，其他都是優惠活動。</p><div class="v7-tile-grid">${Array.from({length:12},(_,i)=>`<button data-action="ad-grid" data-index="${i}" class="v7-tile">${(i===(a.variant*7)%12)?'不用了':['8折','抽獎','領券','開搶','VIP','免費','限時','下殺','必買','福利','99元'][i%11]}</button>`).join('')}</div></section>`;
+ if(t==='bubbles')body=`<section class="v3-ad v7-bubbles-card"><span class="ad-mini-tag">🫧 優惠泡泡大軍</span><h2>把四顆氣泡戳破！</h2><p>氣泡擋住你的購物車了。</p><div class="v7-bubble-area">${['再買一件','滿千送百','驚喜包','關閉'].map((x,i)=>state.adCleared.includes(i)?'':`<button style="--j:${i}" data-action="ad-pop" data-index="${i}">${x}</button>`).join('')}</div><small>${state.adCleared.length} / 4</small></section>`;
+ if(t==='flipcard')body=`<section class="v3-ad v7-flip-card"><span class="ad-mini-tag">🃏 優惠反轉卡</span><h2>${state.promoDismissStage?'真的要放棄這張卡？':'翻開卡片才有退出鍵'}</h2><button class="v7-card-face ${state.promoDismissStage?'flipped':''}" data-action="ad-flip">${state.promoDismissStage?'🧾 下次再說':'🎁 點一下翻面'}</button>${state.promoDismissStage?'<button class="ad-secondary" data-action="ad-flip-close">不要優惠，結束</button>':'<small>這是遊戲廣告，沒有任何購買行為</small>'}</section>`;
+ if(t==='pinlock')body=`<section class="v3-ad v7-pin-card"><span class="ad-mini-tag">🔢 三碼活動驗證</span><h2>輸入下面的 3 位代碼</h2><p>這不是信用卡！只是廣告要你浪費三下。</p><div class="v7-pin-shown">${String(314+a.variant*53).slice(-3)}</div><div class="v7-pin-entered">${'●'.repeat(state.adEntered.length)}${'○'.repeat(3-state.adEntered.length)}</div><div class="v7-pin-pad">${['1','2','3','4','5','6','7','8','9','清除','0','←'].map(x=>`<button data-action="ad-pin" data-digit="${x}">${x}</button>`).join('')}</div><button class="ad-fallback" data-action="ad-fallback">無法操作？略過驗證</button></section>`;
+ if(t==='receipt')body=`<section class="v3-ad v7-receipt-card"><span class="ad-mini-tag">🧾 促銷超長小票</span><h2>滑到最底部才能跳過</h2><div class="v7-receipt-scroll" data-receipt-scroll="true"><div class="v7-receipt-rows">${Array.from({length:20},(_,i)=>`<div>優惠條款 ${i+1}<span>省 $${(i+1)*10}</span></div>`).join('')}</div><button class="v7-receipt-close" data-action="ad-receipt">不用了，關閉小票</button></div><button class="ad-fallback" data-action="ad-fallback">捲動有問題？點此略過</button></section>`;
+ if(t==='quiz')body=`<section class="v3-ad v7-quiz-card"><span class="ad-mini-tag">🧠 會員快問快答</span><h2>你要不要領優惠？</h2><p>點選真正能結束活動的選項：</p>${['我要超級折扣','幫我自動領券','不用，繼續購物','立即訂閱'].map((x,i)=>`<button class="v7-quiz-opt" data-action="ad-quiz" data-index="${i}">${x}</button>`).join('')}</section>`;
+ if(t==='stamp')body=`<section class="v3-ad v7-stamp-card"><span class="ad-mini-tag">🔖 贊助單位小測驗</span><h2>蓋 3 個章才能離開</h2><p>幫活動卡蓋完印章就放你走。</p><button class="v7-stamp-target" data-action="ad-stamp">${'✅ '.repeat(state.adCloseHits)}${'⬜ '.repeat(3-state.adCloseHits)}</button><span>${state.adCloseHits} / 3</span></section>`;
  if(t==='coupon'&&boss)body=body.replace('<div class="ad-mini-tag">',head+'<div class="ad-mini-tag">');
  if(boss&&!body.includes('ad-boss-tag'))body=body.replace(/(<section[^>]*>)/, '$1'+head);
  return `<div class="v3-ad-overlay ad-overlay-${t}" role="dialog" aria-label="模擬廣告">${body}</div>`;
@@ -478,6 +502,16 @@ function handleAction(a,btn){const id=btn.dataset.id;
  case 'show-help':state.modal='help';renderOverlay();break;
  case 'show-records':state.modal='records';renderOverlay();break;
  case 'close-modal':state.modal=null;renderOverlay();break;
+ case 'ad-clear-one':if(state.currentAd?.type==='toaststack'){const i=Number(btn.dataset.index);if(!state.adCleared.includes(i))state.adCleared.push(i);if(state.adCleared.length===3)adClose('solved');else renderOverlay();}break;
+ case 'ad-cookie-reject':if(state.currentAd?.type==='cookiebar')adClose('solved');break;
+ case 'ad-grid':if(state.currentAd?.type==='gridhunt'){if(Number(btn.dataset.index)===(state.currentAd.variant*7)%12)adClose('solved');else toast('這格是領券！繼續找「不用了」。');}break;
+ case 'ad-pop':if(state.currentAd?.type==='bubbles'){const i=Number(btn.dataset.index);if(!state.adCleared.includes(i))state.adCleared.push(i);if(state.adCleared.length===4)adClose('solved');else renderOverlay();}break;
+ case 'ad-flip':if(state.currentAd?.type==='flipcard'){state.promoDismissStage=1;renderOverlay();}break;
+ case 'ad-flip-close':if(state.currentAd?.type==='flipcard'&&state.promoDismissStage)adClose('solved');break;
+ case 'ad-pin':if(state.currentAd?.type==='pinlock'){const d=btn.dataset.digit;if(d==='清除')state.adEntered='';else if(d==='←')state.adEntered=state.adEntered.slice(0,-1);else if(state.adEntered.length<3)state.adEntered+=d;if(state.adEntered.length===3){if(state.adEntered===String(314+state.currentAd.variant*53).slice(-3))adClose('solved');else{toast('三碼不對，再試試！');state.adEntered='';renderOverlay();}}else renderOverlay();}break;
+ case 'ad-receipt':if(state.currentAd?.type==='receipt'){const scroll=btn.closest('.v7-receipt-scroll');if(scroll&&scroll.scrollTop+scroll.clientHeight>=scroll.scrollHeight-35)adClose('receipt');else toast('小票還沒滑到底部哦！');}break;
+ case 'ad-quiz':if(state.currentAd?.type==='quiz'){if(Number(btn.dataset.index)===2)adClose('solved');else toast('這是加購選項！請選「不用」。');}break;
+ case 'ad-stamp':if(state.currentAd?.type==='stamp'){state.adCloseHits++;if(state.adCloseHits>=3)adClose('solved');else renderOverlay();}break;
  case 'close-promo':adClose('click');break;
  case 'ad-dismiss':adClose('click');break;
  case 'ad-fallback':adClose('fallback');break;
@@ -495,7 +529,7 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape'){if(state.ta
 let adGesture=null,holdTimer=null;
 document.addEventListener('pointerdown',event=>{
  const target=event.target.closest('[data-drag-ad]');
- if(target&&state.promoOpen){adGesture={x:event.clientX,y:event.clientY,kind:target.dataset.dragAd,id:event.pointerId};target.setPointerCapture?.(event.pointerId);}
+ if(target&&state.promoOpen&&!event.target.closest('[data-action]')){adGesture={x:event.clientX,y:event.clientY,kind:target.dataset.dragAd,id:event.pointerId};target.setPointerCapture?.(event.pointerId);}
  if(event.target.closest('[data-hold-close]')&&state.promoOpen){
    holdTimer=setTimeout(()=>{holdTimer=null;if(state.promoOpen&&state.currentAd?.type==='scratch')adClose('hold');},1000);
  }
@@ -503,7 +537,7 @@ document.addEventListener('pointerdown',event=>{
 document.addEventListener('pointerup',event=>{
  if(adGesture&&state.promoOpen&&adGesture.id===event.pointerId){
   const dx=event.clientX-adGesture.x,dy=event.clientY-adGesture.y;
-  const success=adGesture.kind==='horizontal'?Math.abs(dx)>95:adGesture.kind==='down'?dy>90:dy< -85;
+  const success=adGesture.kind==='horizontal'?Math.abs(dx)>95:adGesture.kind==='down'?dy>90:adGesture.kind==='right'?dx>150:dy< -85;
   adGesture=null;if(success)adClose('drag');else toast('再滑遠一點！');
  }
  if(holdTimer){clearTimeout(holdTimer);holdTimer=null;if(state.promoOpen&&state.currentAd?.type==='scratch')toast('要按住完整 1 秒才可以！');}
